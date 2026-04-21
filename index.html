@@ -403,9 +403,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans
 /* Filters */
 .ms-filters { display: flex; gap: 8px; margin-bottom: 18px; align-items: center; flex-wrap: wrap; }
 .ms-filter { padding: 7px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; border: 1.5px solid #d1d5db; background: white; color: #374151; font-weight: 500; white-space: nowrap; }
-.ms-filter.active { background: white; border-color: #111827; color: #111827; font-weight: 600; }
+.ms-filter.active { background: #eff6ff; border-color: #2563eb; color: #1d4ed8; font-weight: 600; }
 .ms-filter .cnt { display: inline-block; background: #e5e7eb; border-radius: 8px; padding: 0 6px; font-size: 11px; margin-left: 4px; }
-.ms-filter.active .cnt { background: #374151; color: white; }
+.ms-filter.active .cnt { background: #2563eb; color: white; }
 .ms-search-wrap { margin-left: auto; display: flex; align-items: center; border: 1.5px solid #e5e7eb; border-radius: 8px; padding: 6px 12px; gap: 6px; background: white; }
 .ms-search-wrap input { border: none; outline: none; font-size: 13px; width: 150px; }
 
@@ -3452,6 +3452,42 @@ function renderAgreementTables() {
 }
 
 // ── sA2 Program Selection ──────────────────────────────
+
+
+// ── S5 tab switching ──────────────────────────────────────────────────────────
+function s5ShowTab(tab) {
+  const tabs = ['partnerships', 'settings'];
+  tabs.forEach(t => {
+    const tabEl = document.getElementById('s5-tab-' + t);
+    const panelEl = document.getElementById('s5-panel-' + t);
+    const isActive = t === tab;
+    if (panelEl) panelEl.style.display = isActive ? 'block' : 'none';
+    if (tabEl) {
+      tabEl.style.color = isActive ? '#111827' : '#6b7280';
+      tabEl.style.borderBottomColor = isActive ? '#1D6B45' : 'transparent';
+      tabEl.style.fontWeight = isActive ? '600' : '500';
+    }
+  });
+}
+
+function toggleS5Automations() {
+  const body = document.getElementById('s5-auto-body');
+  const chev = document.getElementById('s5-auto-chevron');
+  if (!body) return;
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  if (chev) chev.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
+function toggleS5Toggle(togId, lblId) {
+  const tog = document.getElementById(togId);
+  if (!tog) return;
+  const knob = tog.querySelector('span');
+  const isOn = tog.dataset.on !== 'false';
+  tog.dataset.on = isOn ? 'false' : 'true';
+  tog.style.background = isOn ? '#d1d5db' : '#2563eb';
+  if (knob) knob.style.left = isOn ? '3px' : '21px';
+}
 
 function toggleAccordion(id) {
   const body = document.getElementById(id);
