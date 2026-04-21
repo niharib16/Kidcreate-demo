@@ -2529,11 +2529,6 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           <div class="gmail-msg-body">
             <p>Hi Sarah,</p>
             <p style="margin-top:10px">Your partnership proposal with <strong>Kid Create Studio – Ashburn</strong> is ready. We've put together a program plan based on your request and it's now ready for your signature.</p>
-            <div class="gmail-class-list" style="margin:16px 0;">
-              <div class="gmail-class-item"><span class="gmail-class-name">Science Magic</span><span class="gmail-class-count">10 sessions · Tuesdays 5:30 PM</span></div>
-              <div class="gmail-class-item"><span class="gmail-class-name">Teeny, Tiny Treats</span><span class="gmail-class-count">20 sessions · Thursdays 5:30 PM</span></div>
-            </div>
-            <p style="color:#6b7280;font-size:13px">Total: 30 sessions · $85/class · Billing at end of semester per student attended</p>
             <button class="gmail-cta-btn" onclick="goTo('s10')" style="margin-top:20px">Review &amp; Sign Agreement →</button>
             <div class="gmail-msg-notes" style="margin-top:20px">
               <p>Questions? Reply to this email or call us at (703) 555-0100.</p>
@@ -2859,11 +2854,20 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
         <!-- ATTENDANCE TRACKING TAB -->
         <div id="s12-attendance" style="display:none;">
           <div style="background:white;border:1px solid #e5e7eb;border-radius:10px;padding:24px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
               <div>
                 <div style="font-size:16px;font-weight:700;color:#111827;">Attendance Tracking</div>
                 <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
               </div>
+              <button id="att-send-btn" onclick="sendAttendanceToSchool()" style="padding:7px 16px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Send to school →</button>
+            </div>
+            <!-- Sent banner -->
+            <div id="att-sent-banner" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;margin-bottom:14px;display:none;align-items:center;justify-content:space-between;gap:10px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:15px;">📧</span>
+                <span style="font-size:12px;color:#166534;font-weight:500;">Attendance sheet sent to sjohnson@oakview.edu — awaiting school response</span>
+              </div>
+              <button onclick="openSchoolResponseModal()" style="padding:5px 12px;border:1px solid #bbf7d0;background:white;color:#166534;border-radius:6px;font-size:12px;cursor:pointer;white-space:nowrap;">Simulate school response →</button>
             </div>
             <div class="ms-table-wrap">
               <table class="ms-table">
@@ -2876,53 +2880,26 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Apr 14, 2026</td>
-                    <td><span style="color:#1D6B45;font-weight:500;">Science Magic</span></td>
-                    <td><span style="background:#e5e7eb;border-radius:6px;padding:2px 8px;font-size:12px;">8</span></td>
-                    <td><span style="background:#dcfce7;border-radius:6px;padding:2px 8px;font-size:12px;color:#166534;">7</span></td>
-                    <td><span class="badge badge-signed">Completed</span></td>
-                  </tr>
-                  <tr>
-                    <td>Apr 16, 2026</td>
-                    <td><span style="color:#6d28d9;font-weight:500;">Teeny Tiny Treats</span></td>
-                    <td><span style="background:#e5e7eb;border-radius:6px;padding:2px 8px;font-size:12px;">10</span></td>
-                    <td><span style="background:#dcfce7;border-radius:6px;padding:2px 8px;font-size:12px;color:#166534;">9</span></td>
-                    <td><span class="badge badge-signed">Completed</span></td>
-                  </tr>
-                  <tr>
-                    <td>Apr 21, 2026</td>
-                    <td><span style="color:#1D6B45;font-weight:500;">Science Magic</span></td>
-                    <td><span style="background:#e5e7eb;border-radius:6px;padding:2px 8px;font-size:12px;">8</span></td>
-                    <td><span style="background:#dcfce7;border-radius:6px;padding:2px 8px;font-size:12px;color:#166534;">8</span></td>
-                    <td><span class="badge badge-signed">Completed</span></td>
-                  </tr>
-                  <tr>
-                    <td>Apr 23, 2026</td>
-                    <td><span style="color:#6d28d9;font-weight:500;">Teeny Tiny Treats</span></td>
-                    <td><span style="background:#e5e7eb;border-radius:6px;padding:2px 8px;font-size:12px;">10</span></td>
-                    <td><span style="background:#dcfce7;border-radius:6px;padding:2px 8px;font-size:12px;color:#166534;">10</span></td>
-                    <td><span class="badge badge-signed">Completed</span></td>
-                  </tr>
-                  <tr>
-                    <td>Apr 28, 2026</td>
-                    <td><span style="color:#1D6B45;font-weight:500;">Science Magic</span></td>
-                    <td><span style="background:#e5e7eb;border-radius:6px;padding:2px 8px;font-size:12px;">7</span></td>
-                    <td>—</td>
-                    <td><span class="badge badge-requested">Upcoming</span></td>
-                  </tr>
-                  <tr>
-                    <td>Apr 30, 2026</td>
-                    <td><span style="color:#6d28d9;font-weight:500;">Teeny Tiny Treats</span></td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><span class="badge badge-requested">Upcoming</span></td>
-                  </tr>
-                </tbody>
+                <tbody id="s12-attendance-tbody"></tbody>
               </table>
             </div>
-            <div style="font-size:12px;color:#9ca3af;margin-top:12px;padding:0 4px;">Showing 6 of 20 total sessions · Min enrollment per session: 6 students</div>
+            <div id="att-footer" style="font-size:12px;color:#9ca3af;margin-top:12px;padding:0 4px;"></div>
+          </div>
+        </div>
+
+        <!-- School Response Modal -->
+        <div id="schoolResponseModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:2000;align-items:center;justify-content:center;">
+          <div style="background:white;border-radius:12px;padding:28px 32px;width:520px;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+              <div style="font-size:16px;font-weight:700;color:#111827;">School Attendance Form</div>
+              <div onclick="document.getElementById('schoolResponseModal').style.display='none'" style="cursor:pointer;color:#9ca3af;font-size:20px;">×</div>
+            </div>
+            <div style="font-size:12px;color:#6b7280;margin-bottom:20px;">Oak View Elementary — fill in registered & attended for each upcoming session</div>
+            <div id="school-response-fields"></div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid #f3f4f6;">
+              <button onclick="document.getElementById('schoolResponseModal').style.display='none'" style="padding:7px 16px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+              <button onclick="submitSchoolResponse()" style="padding:7px 16px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Submit response</button>
+            </div>
           </div>
         </div>
 
@@ -2988,40 +2965,11 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
             <th>Total</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Apr 14, 2026</td>
-            <td>Science Magic</td>
-            <td style="text-align:center">7</td>
-            <td>$20.00</td>
-            <td><strong>$140.00</strong></td>
-          </tr>
-          <tr>
-            <td>Apr 16, 2026</td>
-            <td>Teeny Tiny Treats</td>
-            <td style="text-align:center">9</td>
-            <td>$20.00</td>
-            <td><strong>$180.00</strong></td>
-          </tr>
-          <tr>
-            <td>Apr 21, 2026</td>
-            <td>Science Magic</td>
-            <td style="text-align:center">8</td>
-            <td>$20.00</td>
-            <td><strong>$160.00</strong></td>
-          </tr>
-          <tr>
-            <td>Apr 23, 2026</td>
-            <td>Teeny Tiny Treats</td>
-            <td style="text-align:center">10</td>
-            <td>$20.00</td>
-            <td><strong>$200.00</strong></td>
-          </tr>
-        </tbody>
+        <tbody id="s13-invoice-tbody"></tbody>
       </table>
       <div class="inv-total-row">
         <span>Total Due</span>
-        <span>$680.00</span>
+        <span id="s13-invoice-total">—</span>
       </div>
       <div style="font-size:12px;color:#9ca3af;margin-top:8px">Payment due within 30 days of receipt via credit card or check.</div>
       <div class="inv-modal-actions">
@@ -3343,6 +3291,131 @@ function filterSessions(screenId, filter) {
   }
 }
 
+// ── Attendance & Invoice data layer ───────────────────
+const _attColors = ['#1D6B45','#6d28d9','#c05621','#1d4ed8','#be185d','#0f766e'];
+const _defaultAtt = [[8,7],[10,9],[8,8],[10,10],[7,6],[9,8],[8,7],[10,9]];
+
+function getS12AttendanceStore() {
+  if (!window.s12AttendanceStore) {
+    const store = getS6Store();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const protoToday = new Date(2026, 3, 22);
+    let defIdx = 0;
+    window.s12AttendanceStore = [];
+    store.forEach((program, pi) => {
+      const parts = program.startDate.split(' ');
+      const mIdx = months.indexOf(parts[0]);
+      let date = new Date(parseInt(parts[2]), mIdx, parseInt(parts[1]));
+      for (let s = 0; s < (program.sessions || 10); s++) {
+        const done = date < protoToday;
+        const def = _defaultAtt[defIdx % _defaultAtt.length];
+        const dateStr = months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+        window.s12AttendanceStore.push({
+          date: dateStr, sortKey: date.getTime(),
+          program: program.title, programIdx: pi,
+          registered: done ? def[0] : null,
+          attended: done ? def[1] : null,
+          status: done ? 'completed' : 'upcoming'
+        });
+        if (done) defIdx++;
+        date = new Date(date); date.setDate(date.getDate() + 7);
+      }
+    });
+    window.s12AttendanceStore.sort((a, b) => a.sortKey - b.sortKey);
+  }
+  return window.s12AttendanceStore;
+}
+
+function renderS12Attendance() {
+  const tbody = document.getElementById('s12-attendance-tbody');
+  if (!tbody) return;
+  const rows = getS12AttendanceStore();
+  tbody.innerHTML = rows.map((row, i) => {
+    const color = _attColors[row.programIdx % _attColors.length];
+    const regVal = row.registered !== null ? row.registered : '';
+    const attVal = row.attended !== null ? row.attended : '';
+    const attStyle = row.status === 'completed' && row.attended !== null
+      ? 'border:1px solid #bbf7d0;color:#166534;background:#f0fdf4;'
+      : 'border:1px solid #e5e7eb;';
+    const badge = row.status === 'completed'
+      ? '<span class="badge badge-signed">Completed</span>'
+      : '<span class="badge badge-requested">Upcoming</span>';
+    return `<tr>
+      <td>${row.date}</td>
+      <td><span style="color:${color};font-weight:500;">${row.program}</span></td>
+      <td style="text-align:center"><input type="number" min="0" value="${regVal}" placeholder="—" onchange="updateAttendance(${i},'registered',this.value)" style="width:56px;padding:3px 6px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;text-align:center;"></td>
+      <td style="text-align:center"><input type="number" min="0" value="${attVal}" placeholder="—" onchange="updateAttendance(${i},'attended',this.value)" style="width:56px;padding:3px 6px;${attStyle}border-radius:6px;font-size:12px;text-align:center;"></td>
+      <td>${badge}</td>
+    </tr>`;
+  }).join('');
+  const footer = document.getElementById('att-footer');
+  if (footer) footer.textContent = `Showing ${rows.length} sessions · Min enrollment per session: 6 students`;
+}
+
+function updateAttendance(i, field, value) {
+  const store = getS12AttendanceStore();
+  const v = parseInt(value);
+  store[i][field] = isNaN(v) ? null : v;
+  if (store[i].registered !== null || store[i].attended !== null) store[i].status = 'completed';
+}
+
+function renderS13Invoice() {
+  const tbody = document.getElementById('s13-invoice-tbody');
+  const totalEl = document.getElementById('s13-invoice-total');
+  if (!tbody) return;
+  const RATE = 20;
+  const rows = getS12AttendanceStore().filter(r => r.status === 'completed' && r.attended !== null && r.attended > 0);
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#9ca3af;padding:24px;">No completed sessions with attendance data yet.</td></tr>';
+    if (totalEl) totalEl.textContent = '$0.00';
+    return;
+  }
+  let grand = 0;
+  tbody.innerHTML = rows.map(r => {
+    const line = r.attended * RATE;
+    grand += line;
+    return `<tr><td>${r.date}</td><td>${r.program}</td><td style="text-align:center">${r.attended}</td><td>$${RATE.toFixed(2)}</td><td><strong>$${line.toFixed(2)}</strong></td></tr>`;
+  }).join('');
+  if (totalEl) totalEl.textContent = '$' + grand.toFixed(2);
+}
+
+function sendAttendanceToSchool() {
+  const btn = document.getElementById('att-send-btn');
+  if (btn) { btn.textContent = 'Sent ✓'; btn.style.opacity = '0.6'; btn.disabled = true; }
+  const banner = document.getElementById('att-sent-banner');
+  if (banner) banner.style.display = 'flex';
+}
+
+function openSchoolResponseModal() {
+  const rows = getS12AttendanceStore();
+  const upcoming = rows.map((r, i) => ({...r, idx: i})).filter(r => r.status !== 'completed' || r.attended === null);
+  const fieldsEl = document.getElementById('school-response-fields');
+  if (!fieldsEl) return;
+  if (upcoming.length === 0) {
+    fieldsEl.innerHTML = '<p style="color:#6b7280;font-size:13px;text-align:center;padding:16px 0;">All sessions already have attendance data.</p>';
+  } else {
+    fieldsEl.innerHTML = upcoming.map(r => `
+      <div style="display:grid;grid-template-columns:1fr 80px 80px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #f3f4f6;">
+        <div><div style="font-size:13px;font-weight:600;color:#111827;">${r.program}</div><div style="font-size:11px;color:#6b7280;">${r.date}</div></div>
+        <div><label style="font-size:11px;color:#9ca3af;display:block;margin-bottom:3px;">Registered</label><input id="sr-reg-${r.idx}" type="number" min="0" placeholder="0" value="${r.registered || ''}" style="width:100%;padding:5px 8px;border:1px solid #e5e7eb;border-radius:6px;font-size:13px;text-align:center;box-sizing:border-box;"></div>
+        <div><label style="font-size:11px;color:#9ca3af;display:block;margin-bottom:3px;">Attended</label><input id="sr-att-${r.idx}" type="number" min="0" placeholder="0" value="${r.attended || ''}" style="width:100%;padding:5px 8px;border:1px solid #e5e7eb;border-radius:6px;font-size:13px;text-align:center;box-sizing:border-box;"></div>
+      </div>`).join('');
+  }
+  document.getElementById('schoolResponseModal').style.display = 'flex';
+}
+
+function submitSchoolResponse() {
+  const store = getS12AttendanceStore();
+  store.forEach((r, i) => {
+    const regEl = document.getElementById('sr-reg-' + i);
+    const attEl = document.getElementById('sr-att-' + i);
+    if (regEl) { const v = parseInt(regEl.value); if (!isNaN(v) && v > 0) store[i].registered = v; }
+    if (attEl) { const v = parseInt(attEl.value); if (!isNaN(v) && v > 0) { store[i].attended = v; store[i].status = 'completed'; } }
+  });
+  document.getElementById('schoolResponseModal').style.display = 'none';
+  renderS12Attendance();
+}
+
 function renderAgreementTables() {
   const COST = 85;
   const items = getS6Items();
@@ -3441,6 +3514,7 @@ function openAddSessionSheet() {
 
 // ── Tab switching for s12 ──────────────────────────────
 function showPdTab(screenId, tab) {
+  if (screenId === 's12' && tab === 'attendance') renderS12Attendance();
   const allTabs = ['details','sessions','waiver','attendance','invoicing'];
   allTabs.forEach(t => {
     const el = document.getElementById(screenId + '-' + t);
@@ -3480,6 +3554,8 @@ function goTo(id) {
   }
   window.scrollTo(0, 0);
   if (['s6','s7','s9','s10'].includes(id)) { renderS6Sessions(); renderAgreementTables(); }
+  if (id === 's12') renderS12Attendance();
+  if (id === 's13') renderS13Invoice();
 }
 
 function next() {
