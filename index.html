@@ -3208,6 +3208,21 @@ function renderS6Sessions() {
   }).join('');
 }
 
+function saveAgreement() {
+  const sel = document.getElementById('waiverTemplate');
+  if (sel) {
+    const label = sel.options[sel.selectedIndex].text.replace('Template: ', '');
+    const lbl = document.getElementById('s6-waiver-template-label');
+    if (lbl) lbl.textContent = label;
+  }
+  const empty = document.getElementById('s6-waiver-empty');
+  const filled = document.getElementById('s6-waiver-filled');
+  if (empty) empty.style.display = 'none';
+  if (filled) filled.style.display = 'block';
+  showPdTab('s6', 'waiver');
+  goTo('s6');
+}
+
 function filterSessions(screenId, filter) {
   const liveTab = document.getElementById(screenId + '-sess-tab-live');
   const pastTab = document.getElementById(screenId + '-sess-tab-past');
