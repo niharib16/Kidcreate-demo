@@ -3171,7 +3171,7 @@ function s6EditField(el) {
 }
 
 function renderS6Sessions() {
-  const container = document.getElementById('s6-sessions-container');
+  const container = document.getElementById('s6-sessions-list');
   if (!container) return;
   const items = getS6Items();
   const COST = 85;
@@ -3206,6 +3206,30 @@ function renderS6Sessions() {
       </div>
     </div>`;
   }).join('');
+}
+
+function filterSessions(screenId, filter) {
+  const liveTab = document.getElementById(screenId + '-sess-tab-live');
+  const pastTab = document.getElementById(screenId + '-sess-tab-past');
+  const pastEmpty = document.getElementById(screenId + '-sess-past-empty');
+  const list = document.getElementById(screenId + '-sessions-list');
+  if (liveTab) {
+    liveTab.style.color = filter === 'live' ? '#1D6B45' : '#6b7280';
+    liveTab.style.fontWeight = filter === 'live' ? '600' : '400';
+    liveTab.style.borderBottom = filter === 'live' ? '2px solid #1D6B45' : '2px solid transparent';
+  }
+  if (pastTab) {
+    pastTab.style.color = filter === 'past' ? '#1D6B45' : '#6b7280';
+    pastTab.style.fontWeight = filter === 'past' ? '600' : '400';
+    pastTab.style.borderBottom = filter === 'past' ? '2px solid #1D6B45' : '2px solid transparent';
+  }
+  if (filter === 'past') {
+    if (list) list.style.display = 'none';
+    if (pastEmpty) pastEmpty.style.display = 'block';
+  } else {
+    if (list) list.style.display = 'block';
+    if (pastEmpty) pastEmpty.style.display = 'none';
+  }
 }
 
 function renderAgreementTables() {
@@ -3301,7 +3325,7 @@ function openAddSessionSheet() {
 
 // ── Tab switching for s12 ──────────────────────────────
 function showPdTab(screenId, tab) {
-  const allTabs = ['details','waiver','attendance','invoicing'];
+  const allTabs = ['details','sessions','waiver','attendance','invoicing'];
   allTabs.forEach(t => {
     const el = document.getElementById(screenId + '-' + t);
     if (el) el.style.display = (t === tab) ? 'block' : 'none';
