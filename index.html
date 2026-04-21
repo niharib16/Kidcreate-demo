@@ -3452,6 +3452,16 @@ function renderAgreementTables() {
 }
 
 // ── sA2 Program Selection ──────────────────────────────
+
+function toggleAccordion(id) {
+  const body = document.getElementById(id);
+  const chevron = document.getElementById(id + '-chevron');
+  if (!body) return;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if (chevron) chevron.classList.toggle('open', !isOpen);
+}
+
 const sA2Selected = new Map();
 
 function sA2Toggle(el) {
@@ -3475,6 +3485,11 @@ function sA2Toggle(el) {
     el.style.background = '#f0fdf4';
     if (cb) { cb.style.background = '#1D6B45'; cb.style.borderColor = '#1D6B45'; cb.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'; }
   }
+  // update submit button state
+  const btn = document.getElementById('sA2-submit-btn');
+  if (btn) { btn.style.opacity = sA2Selected.size > 0 ? '1' : '0.4'; btn.style.cursor = sA2Selected.size > 0 ? 'pointer' : 'default'; }
+  const count = document.getElementById('sA2-count');
+  if (count) count.textContent = sA2Selected.size;
 }
 
 function sA2Submit() {
