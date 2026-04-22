@@ -1079,7 +1079,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
               <div id="s2-class-list" style="display:flex;flex-direction:column;gap:8px;">
                 <!-- Populated by loadS2Classes() -->
               </div>
-              <div id="s2-no-age" style="font-size:13px;color:#9ca3af;padding:8px 0;">Select an age group above to see matching programs.</div>
+              <div id="s2-no-age" style="display:none;font-size:13px;color:#9ca3af;padding:8px 0;">Select an age group above to see matching programs.</div>
             </div>
           </div>
 
@@ -1383,27 +1383,30 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
 
             <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:18px 22px;margin:18px 0;">
               <div style="display:grid;grid-template-columns:160px 1fr;gap:0;">
-                <div style="font-size:12px;color:#9ca3af;padding:6px 0;border-bottom:1px solid #f3f4f6;">School</div>
-                <div style="font-size:13px;color:#111;font-weight:600;padding:6px 0;border-bottom:1px solid #f3f4f6;">Oak View Elementary</div>
-                <div style="font-size:12px;color:#9ca3af;padding:6px 0;border-bottom:1px solid #f3f4f6;">Contact</div>
-                <div style="font-size:13px;color:#374151;padding:6px 0;border-bottom:1px solid #f3f4f6;">Sarah Johnson &nbsp;·&nbsp; sjohnson@oakview.edu &nbsp;·&nbsp; (703) 555-0192</div>
-                <div style="font-size:12px;color:#9ca3af;padding:6px 0;border-bottom:1px solid #f3f4f6;">Location</div>
-                <div style="font-size:13px;color:#374151;padding:6px 0;border-bottom:1px solid #f3f4f6;">Kidcreate Studio – Ashburn</div>
-                <div style="font-size:12px;color:#9ca3af;padding:6px 0;border-bottom:1px solid #f3f4f6;">Age group</div>
-                <div style="font-size:13px;color:#374151;padding:6px 0;border-bottom:1px solid #f3f4f6;">Preschool Age</div>
-                <div style="font-size:12px;color:#9ca3af;padding:6px 0;">Interested in</div>
-                <div style="padding:6px 0;display:flex;gap:6px;flex-wrap:wrap;">
-                  <span style="background:#f0fdf4;color:#166534;border-radius:4px;padding:2px 9px;font-size:11px;font-weight:600;">Registration Based Classes</span>
-                  <span style="background:#f0fdf4;color:#166534;border-radius:4px;padding:2px 9px;font-size:11px;font-weight:600;">Group Activities</span>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">School</div>
+                <div id="sKC1-school" style="font-size:13px;color:#111;font-weight:600;padding:7px 0;border-bottom:1px solid #f3f4f6;">Oak View Elementary</div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">Contact</div>
+                <div id="sKC1-contact" style="font-size:13px;color:#374151;padding:7px 0;border-bottom:1px solid #f3f4f6;">Sarah Johnson · sjohnson@oakview.edu</div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">Location</div>
+                <div id="sKC1-location" style="font-size:13px;color:#374151;padding:7px 0;border-bottom:1px solid #f3f4f6;">Kidcreate Studio – Ashburn</div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">Age group</div>
+                <div id="sKC1-age" style="font-size:13px;color:#374151;padding:7px 0;border-bottom:1px solid #f3f4f6;">School Age (6 – 12 yrs)</div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">Schedule</div>
+                <div id="sKC1-schedule" style="font-size:13px;color:#374151;padding:7px 0;border-bottom:1px solid #f3f4f6;">Tuesdays and Thursdays at 5:30 PM</div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;border-bottom:1px solid #f3f4f6;">Classes interested in</div>
+                <div id="sKC1-programs" style="padding:7px 0;border-bottom:1px solid #f3f4f6;display:flex;gap:6px;flex-wrap:wrap;">
+                  <span style="background:#f0fdf4;color:#166534;border-radius:4px;padding:2px 9px;font-size:11px;font-weight:600;">Science Magic</span>
+                  <span style="background:#f0fdf4;color:#166534;border-radius:4px;padding:2px 9px;font-size:11px;font-weight:600;">Teeny Tiny Treats</span>
                 </div>
+                <div style="font-size:12px;color:#9ca3af;padding:7px 0;">Approx. students</div>
+                <div id="sKC1-students" style="font-size:13px;color:#374151;padding:7px 0;">Not specified</div>
               </div>
             </div>
 
-            <p style="color:#6b7280;font-size:13px;margin-top:4px;">A follow-up email has been sent to the school to select specific art programs. You'll receive another notification once they complete project selection.</p>
-            <p style="color:#6b7280;font-size:13px;margin-top:8px;">If you don't hear from them within 3 days, MyStudio will send an automated reminder on your behalf.</p>
+            <p style="color:#6b7280;font-size:13px;margin-top:4px;">Review the details and reach out to the school to confirm the partnership and session schedule.</p>
 
             <div style="margin-top:24px;">
-              <button onclick="goTo('s5')" style="background:#1D6B45;color:white;border:none;padding:11px 28px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">View in MyStudio →</button>
+              <button onclick="goTo('s6')" style="background:#1D6B45;color:white;border:none;padding:11px 28px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">View in MyStudio →</button>
             </div>
           </div>
         </div>
@@ -2217,7 +2220,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid #f3f4f6;">
               <div style="font-size:16px; font-weight:700; color:#111827;">Sessions</div>
               <div style="display:flex;gap:8px;">
-                <button onclick="openManageSessionsSheet()" style="padding:7px 16px; background:white; color:#374151; border:1px solid #e5e7eb; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">Manage sessions</button>
+                
                 <button onclick="openAddSessionSheet()" style="padding:7px 16px; background:#1D6B45; color:white; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">+ Add session</button>
               </div>
             </div>
@@ -2941,14 +2944,10 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           <div style="background:white;border:1px solid #e5e7eb;border-radius:10px;padding:24px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f3f4f6;">
               <div style="font-size:16px;font-weight:700;color:#111827;">Active Sessions</div>
-              <button onclick="openManageSessionsSheet()" style="padding:7px 16px;background:white;color:#374151;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Manage sessions</button>
+              
             </div>
-            <div class="ms-table-wrap">
-              <table class="ms-table">
-                <thead><tr><th>#</th><th>Date</th><th>Program</th><th>Instructor</th><th>Registered</th><th>Attended</th><th>Status</th></tr></thead>
-                <tbody id="s12-sessions-tbody"></tbody>
-              </table>
-            </div>
+            <div id="s12-sessions-list"></div>
+            <div id="s12-sess-footer" style="font-size:12px;color:#9ca3af;margin-top:4px;padding:0 2px;"></div>
           </div>
         </div>
 
@@ -2989,10 +2988,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
                 <div style="font-size:16px;font-weight:700;color:#111827;">Attendance Tracking</div>
                 <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
               </div>
-              <button onclick="openManageSessionsSheet()" style="display:flex;align-items:center;gap:6px;background:white;border:1.5px solid #d1d5db;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:500;color:#374151;cursor:pointer;">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="#374151" stroke-width="1.5" stroke-linecap="round"/></svg>
-                Manage Sessions
-              </button>
+              
             </div>
 
             <div class="ms-table-wrap">
@@ -3327,40 +3323,50 @@ function renderS6Sessions() {
   const container = document.getElementById('s6-sessions-list');
   if (!container) return;
   const items = getS6Store();
-  const COST = 85;
+  const COST = 20;
   if (items.length === 0) {
-    container.innerHTML = '<div style="padding:24px;text-align:center;color:#9ca3af;font-size:13px;">No sessions yet. Click "+ Add session" to add one.</div>';
+    container.innerHTML = '<div style="padding:24px;text-align:center;color:#9ca3af;font-size:13px;">No sessions yet. Click \"+ Add session\" to add one.</div>';
   } else {
-    container.innerHTML = items.map((item, i) => {
-      const sched = _scheduleLabels[item.scheduleKey] || item.scheduleKey;
-      const endDate = s6AddWeeks(item.startDate, item.sessions || 10);
-      const total = (item.sessions || 10) * COST;
-      return `<div style="background:white;border:1.5px solid #e5e7eb;border-radius:10px;padding:20px;margin-bottom:16px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-          <div style="font-size:15px;font-weight:700;color:#111827;">${item.title}</div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="background:#dcfce7;color:#166534;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;">Confirmed</span>
-            <button class="session-btn" onclick="openEditSessionSheet(${i})" style="padding:4px 12px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;">Edit</button>
-            <button class="session-btn danger" onclick="deleteSession(${i})" style="padding:4px 12px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;" onmouseover="this.style.background='#fef2f2';this.style.color='#dc2626';this.style.borderColor='#fecaca'" onmouseout="this.style.background='white';this.style.color='#374151';this.style.borderColor='#e5e7eb'">Delete</button>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;font-size:13px;">
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Schedule</div><span style="color:#374151;">${sched}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Start date</div><span style="color:#374151;">${item.startDate}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">End date</div><span style="color:#374151;">${endDate}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Sessions</div><span style="color:#374151;">${item.sessions || 10}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Students</div><span style="color:#374151;">${item.students || 20}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Instructor</div><span style="color:#374151;">${item.instructor}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Cost/session</div><span style="color:#374151;">$${COST}</span></div>
-          <div><div style="font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Total</div><span style="color:#1D6B45;font-weight:700;">$${total.toLocaleString()}</span></div>
-        </div>
-      </div>`;
-    }).join('');
+    container.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="border-bottom:2px solid #e5e7eb;">
+          <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Class</th>
+          <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Schedule</th>
+          <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Start date</th>
+          <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">End date</th>
+          <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Sessions</th>
+          <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Students</th>
+          <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Instructor</th>
+          <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Cost/student</th>
+          <th style="padding:9px 12px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        ${items.map((item, i) => {
+          const sched = _scheduleLabels[item.scheduleKey] || item.scheduleKey;
+          const endDate = s6AddWeeks(item.startDate, item.sessions || 10);
+          return `<tr style="border-bottom:1px solid #f3f4f6;">
+            <td style="padding:12px 12px;font-weight:600;color:#111827;">${item.title}</td>
+            <td style="padding:12px 12px;color:#374151;">${sched}</td>
+            <td style="padding:12px 12px;color:#374151;">${item.startDate}</td>
+            <td style="padding:12px 12px;color:#374151;">${endDate}</td>
+            <td style="padding:12px 12px;text-align:center;color:#374151;">${item.sessions || 10}</td>
+            <td style="padding:12px 12px;text-align:center;color:#374151;">${item.students || 20}</td>
+            <td style="padding:12px 12px;color:#374151;">${item.instructor}</td>
+            <td style="padding:12px 12px;text-align:center;color:#374151;">$${COST}</td>
+            <td style="padding:12px 12px;white-space:nowrap;">
+              <button onclick="openEditSessionSheet(${i})" style="padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;margin-right:4px;">Edit</button>
+              <button onclick="openManageSessionsSheet(${i})" style="padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;margin-right:4px;">Manage sessions</button>
+              <button onclick="deleteSession(${i})" title="Delete" style="padding:4px 8px;border-radius:6px;border:1px solid #e5e7eb;background:white;color:#9ca3af;cursor:pointer;line-height:1;" onmouseover="this.style.background='#fef2f2';this.style.color='#dc2626';this.style.borderColor='#fecaca'" onmouseout="this.style.background='white';this.style.color='#9ca3af';this.style.borderColor='#e5e7eb'"><i class="ri-delete-bin-line" style="font-size:15px;vertical-align:middle;"></i></button>
+            </td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>`;
   }
   const footer = document.getElementById('s6-sess-footer');
   if (footer) {
-    const total = items.reduce((s, it) => s + (it.sessions || 10) * COST, 0);
-    footer.textContent = `Showing ${items.length} session${items.length !== 1 ? 's' : ''} · Total value: $${total.toLocaleString()}`;
+    footer.textContent = `Showing ${items.length} session${items.length !== 1 ? 's' : ''}`;
   }
 }
 
@@ -3474,16 +3480,108 @@ function saveSessionSheet() {
     startDate = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
   }
 
+  const classId = String(Date.now());
+
   if (editIdx !== '') {
     const i = parseInt(editIdx);
     store[i] = { ...store[i], title, scheduleKey, startDate, sessions, instructor };
+    // Re-generate sessions for edited class
+    _generateClassSessions(store[i]);
   } else {
-    store.push({ id: String(Date.now()), title, scheduleKey, startDate, sessions, students: 20, instructor });
+    const newClass = { id: classId, title, scheduleKey, startDate, sessions, students: 20, instructor };
+    store.push(newClass);
+    // Auto-generate dated session entries
+    _generateClassSessions(newClass);
   }
 
   document.getElementById('addSessionSheet').style.display = 'none';
   renderS6Sessions();
   renderAgreementTables();
+}
+
+// Generate weekly session entries for a class based on day-picker + start date + count
+function _generateClassSessions(classItem) {
+  if (!window._msSessionsByClass) window._msSessionsByClass = {};
+
+  // Read selected days from the day picker
+  var dayPicker = document.getElementById('sessionDayPicker');
+  var selectedDays = [];
+  if (dayPicker) {
+    var btns = dayPicker.querySelectorAll('.session-day-active');
+    btns.forEach(function(b) { selectedDays.push(b.getAttribute('data-day')); });
+  }
+  // Fallback: derive from scheduleKey (e.g. "tue-530")
+  if (selectedDays.length === 0) {
+    var dayMap = { mon:'Mon', tue:'Tue', wed:'Wed', thu:'Thu', fri:'Fri', sat:'Sat', sun:'Sun' };
+    var prefix = (classItem.scheduleKey || '').split('-')[0].toLowerCase();
+    if (dayMap[prefix]) selectedDays = [dayMap[prefix]];
+    else selectedDays = ['Tue'];
+  }
+
+  var dayNameToNum = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Parse start date from classItem.startDate (e.g. "May 5, 2026") or use today
+  var startDateObj = new Date();
+  if (classItem.startDate) {
+    var parsed = new Date(classItem.startDate);
+    if (!isNaN(parsed)) startDateObj = parsed;
+  }
+  // If sessionStartDate input was used (raw value stored), try that too
+  var startInput = document.getElementById('sessionStartDate');
+  if (startInput && startInput.value) {
+    var d2 = new Date(startInput.value + 'T00:00:00');
+    if (!isNaN(d2)) startDateObj = d2;
+  }
+
+  // Default time from scheduleKey "tue-530" -> "5:30 PM"
+  var defaultTime = '5:30 PM';
+  var schedParts = (classItem.scheduleKey || '').split('-');
+  if (schedParts.length >= 2) {
+    var t = schedParts[1]; // e.g. "530" or "1730"
+    var h = t.length <= 3 ? parseInt(t.slice(0, t.length-2)) : parseInt(t.slice(0, t.length-2));
+    var m = t.slice(-2);
+    if (!isNaN(h)) {
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12 || 12;
+      defaultTime = h12 + ':' + m + ' ' + ampm;
+    }
+  }
+
+  var totalSessions = classItem.sessions || 10;
+  var generated = [];
+  var sessionCount = 0;
+  var cursor = new Date(startDateObj);
+  var maxIter = totalSessions * 14; // safety limit
+  var iter = 0;
+
+  while (sessionCount < totalSessions && iter < maxIter) {
+    iter++;
+    var dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][cursor.getDay()];
+    if (selectedDays.indexOf(dayName) >= 0) {
+      var dateStr = months[cursor.getMonth()] + ' ' + cursor.getDate() + ', ' + cursor.getFullYear();
+      var sortKey = cursor.getFullYear() + '-' + String(cursor.getMonth()+1).padStart(2,'0') + '-' + String(cursor.getDate()).padStart(2,'0');
+      generated.push({
+        date: dateStr,
+        sortKey: sortKey,
+        program: classItem.title,
+        programIdx: 0,
+        registered: null,
+        attended: null,
+        status: 'upcoming',
+        sessionNum: sessionCount + 1,
+        time: defaultTime,
+        instructor: classItem.instructor || 'TBD',
+        notes: ''
+      });
+      sessionCount++;
+    }
+    cursor.setDate(cursor.getDate() + 1);
+  }
+
+  window._msSessionsByClass[classItem.id || classItem.title] = generated;
+  // Reset _msStore so it gets re-built on next open
+  _msStore = null;
 }
 
 function saveAgreement() {
@@ -3497,6 +3595,8 @@ function saveAgreement() {
   const filled = document.getElementById('s6-waiver-filled');
   if (empty) empty.style.cssText = empty.style.cssText.replace(/display:[^;]+;?/, '') + ';display:none;';
   if (filled) filled.style.display = 'block';
+  const addBtn = document.getElementById('s6-waiver-add-btn');
+  if (addBtn) addBtn.style.display = 'none';
   goTo('s6');
   showPdTab('s6', 'waiver');
 }
@@ -3568,34 +3668,83 @@ function getS12AttendanceStore() {
 }
 
 function renderS12Attendance() {
-  const tbody = document.getElementById('s12-attendance-tbody');
+  var tbody = document.getElementById('s12-attendance-tbody');
   if (!tbody) return;
-  const rows = getS12AttendanceStore();
-  tbody.innerHTML = rows.map((row, i) => {
-    const color = _attColors[row.programIdx % _attColors.length];
-    const regVal = row.registered !== null ? row.registered : '';
-    const attVal = row.attended !== null ? row.attended : '';
-    const attStyle = row.status === 'completed' && row.attended !== null
-      ? 'border:1px solid #bbf7d0;color:#166534;background:#f0fdf4;'
-      : 'border:1px solid #e5e7eb;';
-    const badge = row.status === 'completed'
+  var rows = getS12AttendanceStore();
+  tbody.innerHTML = rows.map(function(row, i) {
+    var color = _attColors[row.programIdx % _attColors.length];
+    var badge = row.status === 'completed'
       ? '<span class="badge badge-signed">Completed</span>'
       : '<span class="badge badge-requested">Upcoming</span>';
-    return `<tr>
-      <td>${row.date}</td>
-      <td><span style="color:${color};font-weight:500;">${row.program}</span></td>
-      <td style="text-align:center"><input type="number" min="0" value="${regVal}" placeholder="—" onchange="updateAttendance(${i},'registered',this.value)" style="width:56px;padding:3px 6px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;text-align:center;"></td>
-      <td style="text-align:center"><input type="number" min="0" value="${attVal}" placeholder="—" onchange="updateAttendance(${i},'attended',this.value)" style="width:56px;padding:3px 6px;${attStyle}border-radius:6px;font-size:12px;text-align:center;"></td>
-      <td>${badge}</td>
-    </tr>`;
+    return '<tr>'
+      + '<td>' + row.date + '</td>'
+      + '<td><span style="color:' + color + ';font-weight:500;">' + row.program + '</span></td>'
+      + '<td style="text-align:center;" id="s12-cell-' + i + '-registered">' + s12CellDisplay(row.registered, i, 'registered', row.status) + '</td>'
+      + '<td style="text-align:center;" id="s12-cell-' + i + '-attended">' + s12CellDisplay(row.attended, i, 'attended', row.status) + '</td>'
+      + '<td id="s12-badge-' + i + '">' + badge + '</td>'
+      + '</tr>';
   }).join('');
-  const footer = document.getElementById('att-footer');
-  if (footer) footer.textContent = `Showing ${rows.length} sessions · Min enrollment per session: 6 students`;
+  var footer = document.getElementById('att-footer');
+  if (footer) footer.textContent = 'Showing ' + rows.length + ' sessions · Min enrollment per session: 6 students';
+}
+
+function s12CellDisplay(val, i, field, status) {
+  var q = String.fromCharCode(39); // single quote
+  if (val === null || val === undefined) {
+    return '<span onclick="s12EditCell(' + i + ',' + q + field + q + ')" title="Click to enter" style="cursor:pointer;color:#d1d5db;font-size:15px;font-weight:400;padding:4px 10px;border-radius:6px;display:inline-block;border:1.5px dashed #e5e7eb;min-width:40px;">—</span>';
+  }
+  var greenStyle = (field === 'attended' && status === 'completed') ? 'color:#166534;background:#f0fdf4;border:1.5px solid #bbf7d0;' : 'border:1.5px solid #e5e7eb;';
+  return '<span onclick="s12EditCell(' + i + ',' + q + field + q + ')" title="Click to edit" style="cursor:pointer;' + greenStyle + 'font-size:13px;font-weight:600;padding:3px 12px;border-radius:6px;display:inline-block;">' + val + '</span>';
+}
+
+function s12EditCell(i, field) {
+  var cell = document.getElementById('s12-cell-' + i + '-' + field);
+  if (!cell) return;
+  var store = getS12AttendanceStore();
+  var row = store[i];
+  var current = (row && row[field] !== null && row[field] !== undefined) ? row[field] : '';
+  var q = String.fromCharCode(39);
+  cell.innerHTML = '<div style="display:inline-flex;align-items:center;gap:5px;">'
+    + '<input type="number" min="0" id="s12-input-' + i + '-' + field + '" value="' + current + '" placeholder="0" '
+    + 'style="width:52px;padding:4px 6px;border:1.5px solid #1D6B45;border-radius:6px;font-size:12px;text-align:center;outline:none;" '
+    + 'oninput="s12ShowSave(' + i + ',' + q + field + q + ')" '
+    + 'onkeydown="if(event.key===String.fromCharCode(13))s12SaveCell(' + i + ',' + q + field + q + ');if(event.key===String.fromCharCode(27))renderS12Attendance();">'
+    + '<button id="s12-save-' + i + '-' + field + '" onclick="s12SaveCell(' + i + ',' + q + field + q + ')" '
+    + 'style="display:none;padding:3px 9px;background:#1D6B45;color:white;border:none;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;">Save</button>'
+    + '</div>';
+  var inp = document.getElementById('s12-input-' + i + '-' + field);
+  if (inp) { inp.focus(); if (current !== '') inp.select(); }
+}
+
+function s12ShowSave(i, field) {
+  var btn = document.getElementById('s12-save-' + i + '-' + field);
+  if (btn) btn.style.display = 'inline-block';
+}
+
+function s12SaveCell(i, field) {
+  var inp = document.getElementById('s12-input-' + i + '-' + field);
+  if (!inp) return;
+  var v = parseInt(inp.value);
+  var store = getS12AttendanceStore();
+  if (store[i]) {
+    store[i][field] = isNaN(v) ? null : v;
+    if (store[i].registered !== null || store[i].attended !== null) store[i].status = 'completed';
+  }
+  var row = store[i];
+  var regCell = document.getElementById('s12-cell-' + i + '-registered');
+  var attCell = document.getElementById('s12-cell-' + i + '-attended');
+  var badgeCell = document.getElementById('s12-badge-' + i);
+  if (regCell) regCell.innerHTML = s12CellDisplay(row.registered, i, 'registered', row.status);
+  if (attCell) attCell.innerHTML = s12CellDisplay(row.attended, i, 'attended', row.status);
+  if (badgeCell) badgeCell.innerHTML = row.status === 'completed'
+    ? '<span class="badge badge-signed">Completed</span>'
+    : '<span class="badge badge-requested">Upcoming</span>';
+  showToast('Saved');
 }
 
 function updateAttendance(i, field, value) {
-  const store = getS12AttendanceStore();
-  const v = parseInt(value);
+  var store = getS12AttendanceStore();
+  var v = parseInt(value);
   store[i][field] = isNaN(v) ? null : v;
   if (store[i].registered !== null || store[i].attended !== null) store[i].status = 'completed';
 }
@@ -3742,7 +3891,7 @@ function submitSchoolResponse() {
 }
 
 function renderAgreementTables() {
-  const COST = 85;
+  const COST = 20;
   const items = getS6Items();
   function makeRows(items) {
     return items.map((item, i) => {
@@ -3821,6 +3970,12 @@ function toggleAccordion(id) {
   const isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
   if (chevron) chevron.classList.toggle('open', !isOpen);
+}
+function openGroupActivities() {
+  const body = document.getElementById('acc-group-act');
+  const chevron = document.getElementById('acc-group-act-chevron');
+  if (body) body.classList.add('open');
+  if (chevron) chevron.classList.add('open');
 }
 
 const sA2Selected = new Map();
@@ -3930,6 +4085,18 @@ function goTo(id) {
   }
   window.scrollTo(0, 0);
   if (['s6','s7','s9','s10'].includes(id)) { renderS6Sessions(); renderAgreementTables(); }
+  if (id === 's2') {
+    var ageEl = document.getElementById('s2-age-select');
+    var ageVal = ageEl ? ageEl.value : 'elementary';
+    if (!ageVal) { ageVal = 'elementary'; if (ageEl) ageEl.value = 'elementary'; }
+    loadS2Classes(ageVal);
+    openGroupActivities();
+    // Close other accordions on fresh open
+    ['acc-community2','acc-artkits'].forEach(function(id) {
+      var b = document.getElementById(id); var c = document.getElementById(id+'-chevron');
+      if (b) b.classList.remove('open'); if (c) c.classList.remove('open');
+    });
+  }
   if (id === 's12') { renderS12Attendance(); renderS12Sessions(); renderS12Invoices(); }
   if (id === 's13') { renderS13Invoice(); var sb=document.getElementById('s13-send-btn'); if(sb){sb.textContent='Send Invoice';sb.disabled=false;} }
   if (id === 'sA1' || id === 'sKC1') renderEmailDetails();
@@ -4028,36 +4195,70 @@ function renderEmailDetails() {
   // sKC1 fields
   const emailEl = document.getElementById('s2-email');
   const email = emailEl ? emailEl.value : 'sjohnson@oakview.edu';
+  const studentsEl = document.getElementById('s2-students');
+  const students = studentsEl ? studentsEl.value : null;
+  const kc1TagHtml = classNames.length
+    ? classNames.map(n => '<span style="background:#f0fdf4;color:#166534;border-radius:4px;padding:2px 9px;font-size:11px;font-weight:600;">' + n + '</span>').join(' ')
+    : '<span style="color:#9ca3af;font-size:11px;">No classes selected</span>';
   set('sKC1-school', school); set('sKC1-contact', contact + ' · ' + email);
   set('sKC1-age', age); set('sKC1-location', loc.replace(' — ',' – '));
-  set('sKC1-schedule', sched); setHtml('sKC1-programs', tagHtml);
+  set('sKC1-schedule', sched); setHtml('sKC1-programs', kc1TagHtml);
+  set('sKC1-students', students ? students + ' students' : 'Not specified');
 }
 
 // ── Render sessions in s12 sessions tab ───────────────────────────────────────
 function renderS12Sessions() {
-  const tbody = document.getElementById('s12-sessions-tbody');
-  if (!tbody) return;
-  const rows = getS12AttendanceStore();
-  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  tbody.innerHTML = rows.map((r, i) => {
-    const d = new Date(r.sortKey);
-    const day = isNaN(d) ? '' : days[d.getDay()];
-    const badge = r.status === 'completed'
-      ? '<span class="badge badge-signed">Completed</span>'
-      : '<span class="badge badge-requested">Upcoming</span>';
-    const regVal = r.registered !== null ? r.registered : '<span style="color:#d1d5db">—</span>';
-    const attVal = r.attended !== null ? `<span style="color:#166534;font-weight:600">${r.attended}</span>` : '<span style="color:#d1d5db">—</span>';
-    return `<tr>
-      <td>${i + 1}</td>
-      <td>${r.date}</td>
-      <td style="font-weight:500">${r.program}</td>
-      <td>${['Tu Le','Maria Garcia','James Park'][r.programIdx % 3]}</td>
-      <td style="text-align:center">${regVal}</td>
-      <td style="text-align:center">${attVal}</td>
-      <td>${badge}</td>
-    </tr>`;
-  }).join('');
+  const container = document.getElementById('s12-sessions-list');
+  const footer = document.getElementById('s12-sess-footer');
+  if (!container) return;
+  const items = getS6Store();
+  const COST = 20;
+  if (items.length === 0) {
+    container.innerHTML = '<div style="padding:24px;text-align:center;color:#9ca3af;font-size:13px;">No sessions yet.</div>';
+    if (footer) footer.textContent = '';
+    return;
+  }
+  container.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr style="border-bottom:2px solid #e5e7eb;">
+        <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Class</th>
+        <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Schedule</th>
+        <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Start date</th>
+        <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">End date</th>
+        <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Sessions</th>
+        <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Students</th>
+        <th style="padding:9px 12px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Instructor</th>
+        <th style="padding:9px 12px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Cost/student</th>
+        <th style="padding:9px 12px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      ${items.map((item, i) => {
+        const sched = _scheduleLabels[item.scheduleKey] || item.scheduleKey;
+        const endDate = s6AddWeeks(item.startDate, item.sessions || 10);
+        return `<tr style="border-bottom:1px solid #f3f4f6;">
+          <td style="padding:12px 12px;font-weight:600;color:#111827;">${item.title}</td>
+          <td style="padding:12px 12px;color:#374151;">${sched}</td>
+          <td style="padding:12px 12px;color:#374151;">${item.startDate}</td>
+          <td style="padding:12px 12px;color:#374151;">${endDate}</td>
+          <td style="padding:12px 12px;text-align:center;color:#374151;">${item.sessions || 10}</td>
+          <td style="padding:12px 12px;text-align:center;color:#374151;">${item.students || 20}</td>
+          <td style="padding:12px 12px;color:#374151;">${item.instructor}</td>
+          <td style="padding:12px 12px;text-align:center;color:#374151;">$${COST}</td>
+          <td style="padding:12px 12px;white-space:nowrap;">
+            <button onclick="openEditSessionSheet(${i})" style="padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;margin-right:4px;">Edit</button>
+            <button onclick="openManageSessionsSheet(${i})" style="padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;margin-right:4px;">Manage sessions</button>
+            <button onclick="deleteSession(${i})" style="padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid #e5e7eb;background:white;color:#374151;cursor:pointer;" onmouseover="this.style.background='#fef2f2';this.style.color='#dc2626';this.style.borderColor='#fecaca'" onmouseout="this.style.background='white';this.style.color='#374151';this.style.borderColor='#e5e7eb'">Delete</button>
+          </td>
+        </tr>`;
+      }).join('')}
+    </tbody>
+  </table>`;
+  if (footer) {
+    footer.textContent = `Showing ${items.length} session${items.length !== 1 ? 's' : ''}`;
+  }
 }
+
 
 // ── Age group → programs mapping (from KidCreate website) ────────────────────
 const _ageGroupPrograms = {
@@ -4096,15 +4297,23 @@ function loadS2Classes(ageGroup) {
     return;
   }
   if (noAge) noAge.style.display = 'none';
+  openGroupActivities();
   container.innerHTML = programs.map(function(p) {
-    var infoBtn = p.hasInfo ? '<button type="button" onclick="showClassInfo()" style="font-size:11px;color:#1D6B45;background:none;border:none;cursor:pointer;text-decoration:underline;white-space:nowrap;padding:0;">View more info</button>' : '';
-    return '<label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:8px;background:white;transition:border-color 0.15s;" onmouseover="s2LabelHover(this,true)" onmouseout="s2LabelHover(this,false)">'
-      + '<input type="checkbox" data-class-id="' + p.id + '" style="accent-color:#2d6b3e;width:15px;height:15px;flex-shrink:0;" onchange="onS2ClassCheck(this)">'
-      + '<div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#111;">' + p.name + '</div>'
-      + '<div style="font-size:11px;color:#9ca3af;margin-top:1px;">' + p.ages + ' \xb7 ' + p.duration + '</div></div>'
-      + infoBtn + '</label>';
+    var infoBtn = p.hasInfo
+      ? '<div style="margin-top:5px;"><button type="button" onclick="showClassInfo()" style="font-size:11px;color:#1D6B45;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;">View more info</button></div>'
+      : '';
+    return '<label id="s2-card-' + p.id + '" style="display:flex;align-items:center;gap:12px;cursor:pointer;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:8px;background:white;transition:border-color 0.15s;" onmouseover="s2LabelHover(this,true)" onmouseout="s2LabelHover(this,false)">'
+      + '<input type="checkbox" data-class-id="' + p.id + '" style="accent-color:#2d6b3e;width:16px;height:16px;flex-shrink:0;" onchange="onS2ClassCheck(this)">'
+      + '<div style="flex:1;">'
+      + '<div style="font-size:14px;font-weight:600;color:#111;">' + p.name + '</div>'
+      + '<div style="font-size:12px;color:#9ca3af;margin-top:2px;">' + p.ages + ' · ' + p.duration + '</div>'
+      + infoBtn
+      + '</div>'
+      + '</label>';
   }).join('');
 }
+
+
 function s2LabelHover(el, on) {
   var inp = el.querySelector('input');
   if (!inp || !inp.checked) el.style.borderColor = on ? '#d1fae5' : '#e5e7eb';
@@ -4115,7 +4324,14 @@ function showClassInfo() {
 
 function onS2ClassCheck(cb) {
   const label = cb.closest('label');
-  if (label) label.style.borderColor = cb.checked ? '#1D6B45' : '#e5e7eb';
+  if (label) {
+    label.style.borderColor = cb.checked ? '#1D6B45' : '#e5e7eb';
+    label.style.background = cb.checked ? '#f0fdf4' : 'white';
+  }
+  // update counter
+  const checked = document.querySelectorAll('#s2-class-list input[type=checkbox]:checked');
+  const counter = document.getElementById('s2-selected-count');
+  if (counter) counter.textContent = checked.length + ' program' + (checked.length !== 1 ? 's' : '') + ' selected';
 }
 
 function submitS2Form() {
@@ -4128,7 +4344,20 @@ let _msPendingDeleteIdx = null;
 
 function getMsStore() {
   if (!_msStore) {
-    _msStore = getS12AttendanceStore().map((r, i) => ({...r, sessionNum: i + 1, time: '5:30 PM', instructor: ['Tu Le','Maria Garcia','James Park'][i % 3], notes: '' }));
+    var classIdx = window._msClassIdx || 0;
+    var classItem = getS6Store()[classIdx];
+    var classKey = classItem ? (classItem.id || classItem.title) : null;
+    // If we have auto-generated sessions for this class, use them
+    if (classKey && window._msSessionsByClass && window._msSessionsByClass[classKey] && window._msSessionsByClass[classKey].length > 0) {
+      _msStore = window._msSessionsByClass[classKey].slice();
+    } else if (classItem) {
+      // No generated sessions yet — seed with placeholder rows from attendance store
+      _msStore = getS12AttendanceStore()
+        .filter(function(r) { return !classItem.title || r.program === classItem.title; })
+        .map(function(r, i) { return Object.assign({}, r, { sessionNum: i + 1, time: '5:30 PM', instructor: classItem.instructor || 'Ms. Rivera', notes: '' }); });
+    } else {
+      _msStore = getS12AttendanceStore().map(function(r, i) { return Object.assign({}, r, { sessionNum: i + 1, time: '5:30 PM', instructor: 'Ms. Rivera', notes: '' }); });
+    }
   }
   return _msStore;
 }
@@ -4150,10 +4379,171 @@ function toggleSessionDay(btn) {
   }
 }
 
-function openManageSessionsSheet() {
-  _msStore = null; // fresh copy each open
+function openManageSessionsSheet(classIdx) {
+  window._msClassIdx = (classIdx !== undefined) ? classIdx : 0;
+  var classItem = getS6Store()[window._msClassIdx];
+  var className = classItem ? classItem.title : 'Sessions';
+  // Update sheet header
+  var titleEl = document.getElementById('ms-sheet-title');
+  var subtitleEl = document.getElementById('ms-sheet-subtitle');
+  if (titleEl) titleEl.textContent = className + ' — Sessions';
+  if (subtitleEl) subtitleEl.textContent = 'Oak View Elementary · Spring/Summer 2026';
+  // Reset add form
+  var addTitle = document.getElementById('ms-add-title');
+  var addBtn = document.getElementById('ms-add-btn');
+  if (addTitle) addTitle.textContent = 'Add a session';
+  if (addBtn) { addBtn.textContent = '+ Add'; addBtn.setAttribute('data-edit-idx', ''); }
+  var dateI = document.getElementById('ms-add-date');
+  var timeI = document.getElementById('ms-add-time');
+  if (dateI) dateI.value = '';
+  if (timeI) timeI.value = '17:30';
+  _msStore = null;
   renderMsTable();
   document.getElementById('manageSessionsSheet').style.display = 'block';
+}
+
+var _msmEditIdx = null; // null = adding, number = editing row index
+
+function openSessionModal(editIdx) {
+  _msmEditIdx = (editIdx !== undefined && editIdx !== null) ? editIdx : null;
+  var modal = document.getElementById('msSessionModal');
+  var titleEl = document.getElementById('msSessionModalTitle');
+  var badgeEl = document.getElementById('msSessionModalBadge');
+  var dateEl = document.getElementById('msm-date');
+  var dayEl = document.getElementById('msm-day');
+  var timeEl = document.getElementById('msm-time');
+  var instrEl = document.getElementById('msm-instructor');
+  var errEl = document.getElementById('msm-error');
+
+  if (errEl) errEl.style.display = 'none';
+
+  // Show class name in badge
+  var classIdx0 = window._msClassIdx || 0;
+  var classItem0 = getS6Store()[classIdx0];
+  if (badgeEl) badgeEl.textContent = classItem0 ? classItem0.title : 'Active';
+
+  if (_msmEditIdx !== null) {
+    titleEl.textContent = 'Edit session';
+    var store = getMsStore();
+    var className = classItem0 ? classItem0.title : '';
+    var rows = store.filter(function(r) { return !className || r.program === className; });
+    var row = rows[_msmEditIdx];
+    if (row) {
+      if (dateEl) dateEl.value = row.sortKey || '';
+      if (timeEl && row.time) {
+        var tp = row.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+        if (tp) {
+          var h = parseInt(tp[1]); var mins = tp[2]; var ampm = tp[3].toUpperCase();
+          if (ampm === 'PM' && h !== 12) h += 12;
+          if (ampm === 'AM' && h === 12) h = 0;
+          timeEl.value = String(h).padStart(2,'0') + ':' + mins;
+        }
+      }
+      if (instrEl) instrEl.value = row.instructor || '';
+      // Sync day from date
+      if (dayEl && row.sortKey) {
+        var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        var d0 = new Date(row.sortKey + 'T12:00:00');
+        dayEl.value = days[d0.getDay()];
+      }
+    }
+  } else {
+    titleEl.textContent = 'Add session';
+    if (dateEl) dateEl.value = '';
+    if (dayEl) dayEl.value = '';
+    if (timeEl) timeEl.value = '17:30';
+    if (instrEl) instrEl.value = classItem0 ? (classItem0.instructor || '') : '';
+  }
+
+  modal.style.display = 'flex';
+}
+
+// Sync day dropdown when date changes
+function msmDateChanged() {
+  var dateEl = document.getElementById('msm-date');
+  var dayEl = document.getElementById('msm-day');
+  if (!dateEl || !dayEl || !dateEl.value) return;
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var d = new Date(dateEl.value + 'T12:00:00');
+  dayEl.value = days[d.getDay()];
+}
+
+// When day dropdown changes, advance date to next occurrence of that day
+function msmDayChanged() {
+  var dayEl = document.getElementById('msm-day');
+  var dateEl = document.getElementById('msm-date');
+  if (!dayEl || !dateEl || !dayEl.value) return;
+  var dayMap = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+  var target = dayMap[dayEl.value];
+  if (target === undefined) return;
+  var base = dateEl.value ? new Date(dateEl.value + 'T12:00:00') : new Date();
+  var diff = (target - base.getDay() + 7) % 7;
+  if (diff === 0) diff = 7; // always advance to next occurrence
+  base.setDate(base.getDate() + diff);
+  var yyyy = base.getFullYear();
+  var mm = String(base.getMonth()+1).padStart(2,'0');
+  var dd = String(base.getDate()).padStart(2,'0');
+  dateEl.value = yyyy + '-' + mm + '-' + dd;
+}
+
+function closeMsSessionModal() {
+  document.getElementById('msSessionModal').style.display = 'none';
+}
+
+function saveMsSessionModal() {
+  var dateEl = document.getElementById('msm-date');
+  var timeEl = document.getElementById('msm-time');
+  var instrEl = document.getElementById('msm-instructor');
+  var errEl = document.getElementById('msm-error');
+
+  var dateVal = dateEl ? dateEl.value : '';
+  if (!dateVal) { errEl.textContent = 'Please pick a date.'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var d = new Date(dateVal + 'T12:00:00');
+  var dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  var timeVal = timeEl ? timeEl.value : '17:30';
+  var tparts = timeVal.split(':');
+  var h = parseInt(tparts[0]); var m = tparts[1] || '00';
+  var ampm = h >= 12 ? 'PM' : 'AM'; var h12 = h % 12 || 12;
+  var timeStr = h12 + ':' + m + ' ' + ampm;
+
+  var instructor = instrEl ? instrEl.value.trim() : 'TBD';
+
+  var store = getMsStore();
+  var classIdx = window._msClassIdx || 0;
+  var classItem = getS6Store()[classIdx];
+  var className = classItem ? classItem.title : '';
+
+  if (_msmEditIdx !== null) {
+    // Edit existing
+    var rows = store.filter(function(r) { return !className || r.program === className; });
+    var row = rows[_msmEditIdx];
+    if (row) {
+      row.date = dateStr;
+      row.sortKey = dateVal;
+      row.time = timeStr;
+      row.instructor = instructor || row.instructor;
+    }
+  } else {
+    // Add new — check for duplicate date
+    var dup = store.some(function(r) { return r.sortKey === dateVal && (!className || r.program === className); });
+    if (dup) { errEl.textContent = 'A session already exists on this date.'; errEl.style.display = 'block'; return; }
+    store.push({
+      date: dateStr, sortKey: dateVal, program: className, programIdx: 0,
+      registered: null, attended: null, status: 'upcoming', sessionNum: 0,
+      time: timeStr, instructor: instructor || 'TBD', notes: ''
+    });
+  }
+
+  store.sort(function(a, b) { return a.sortKey.localeCompare(b.sortKey); });
+  store.forEach(function(r, i) { r.sessionNum = i + 1; });
+
+  closeMsSessionModal();
+  renderMsTable();
+  showToast(_msmEditIdx !== null ? 'Session updated' : 'Session added');
 }
 
 function closeManageSessions() {
@@ -4163,11 +4553,20 @@ function closeManageSessions() {
 function renderMsTable() {
   const tbody = document.getElementById('manage-sessions-tbody');
   if (!tbody) return;
-  const rows = getMsStore();
+  const allRows = getMsStore();
+  const classIdx = window._msClassIdx || 0;
+  const classItem = getS6Store()[classIdx];
+  const className = classItem ? classItem.title : '';
+  // Filter rows to this class only (by program name)
+  const rows = allRows.filter(r => !className || r.program === className);
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#9ca3af;padding:24px;font-size:13px;">No sessions yet for this class.</td></tr>';
+    return;
+  }
   tbody.innerHTML = rows.map((r, i) => {
     const d = new Date(r.sortKey);
-    const day = days[d.getDay()];
+    const day = isNaN(d) ? '' : days[d.getDay()];
     const badge = r.status === 'completed'
       ? '<span style="background:#dcfce7;color:#166534;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:600;">Completed</span>'
       : '<span style="background:#f3f4f6;color:#6b7280;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:600;">Upcoming</span>';
@@ -4175,12 +4574,11 @@ function renderMsTable() {
       <td style="padding:10px 10px;color:#9ca3af;font-size:12px;">${r.sessionNum}</td>
       <td style="padding:10px 10px;font-size:13px;color:#111;">${r.date}</td>
       <td style="padding:10px 10px;font-size:13px;color:#374151;">${day} · ${r.time}</td>
-      <td style="padding:10px 10px;font-size:13px;color:#374151;font-weight:500;">${r.program}</td>
       <td style="padding:10px 10px;font-size:13px;color:#374151;">${r.instructor}</td>
       <td style="padding:10px 10px;">${badge}</td>
       <td style="padding:10px 10px;text-align:center;white-space:nowrap;">
-        <button onclick="msEditSession(${i})" style="background:none;border:1px solid #d1d5db;border-radius:5px;cursor:pointer;color:#374151;font-size:11px;font-weight:500;padding:3px 10px;margin-right:4px;">Edit</button>
-        <button onclick="msDeleteSession(${i})" style="background:none;border:none;cursor:pointer;color:#9ca3af;font-size:15px;padding:2px 4px;" title="Delete">🗑</button>
+        <button onclick="openSessionModal(${i})" style="background:none;border:1px solid #d1d5db;border-radius:5px;cursor:pointer;color:#374151;font-size:11px;font-weight:500;padding:3px 10px;margin-right:4px;">Edit</button>
+        <button onclick="msDeleteSession(${i})" title="Delete" style="background:none;border:none;cursor:pointer;color:#9ca3af;padding:3px 6px;border-radius:5px;" onmouseover="this.style.color='#dc2626'" onmouseout="this.style.color='#9ca3af'"><i class="ri-delete-bin-line" style="font-size:15px;vertical-align:middle;"></i></button>
       </td>
     </tr>`;
   }).join('');
@@ -4188,52 +4586,82 @@ function renderMsTable() {
 
 function msEditSession(i) {
   const store = getMsStore();
-  const row = store[i];
+  const classIdx = window._msClassIdx || 0;
+  const className = (getS6Store()[classIdx] || {}).title || '';
+  const rows = store.filter(r => !className || r.program === className);
+  const row = rows[i];
   if (!row) return;
-  // Populate the "Add a session" form at top with this row's data
-  const dateInput = document.getElementById('ms-add-date');
-  const timeInput = document.getElementById('ms-add-time');
-  const instrInput = document.getElementById('ms-add-instructor');
-  if (dateInput) dateInput.value = row.sortKey; // sortKey is YYYY-MM-DD
-  if (timeInput) {
-    // convert "5:30 PM" -> "17:30"
-    const tp = row.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (tp) {
-      let h = parseInt(tp[1]);
-      const m = tp[2];
-      const ampm = tp[3].toUpperCase();
-      if (ampm === 'PM' && h !== 12) h += 12;
-      if (ampm === 'AM' && h === 12) h = 0;
-      timeInput.value = String(h).padStart(2,'0') + ':' + m;
-    }
+
+  // Convert the row to an inline edit form
+  const allRows = document.querySelectorAll('#manage-sessions-tbody tr');
+  const tr = allRows[i];
+  if (!tr) return;
+
+  // Parse existing time "5:30 PM" -> "17:30"
+  const tp = row.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  let timeVal = '17:30';
+  if (tp) {
+    let h = parseInt(tp[1]); const mins = tp[2]; const ampm = tp[3].toUpperCase();
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    timeVal = String(h).padStart(2,'0') + ':' + mins;
   }
-  if (instrInput) instrInput.value = row.instructor || '';
-  // Switch button to Update mode
-  const addBtn = document.getElementById('ms-add-btn');
-  if (addBtn) { addBtn.textContent = 'Update'; addBtn.setAttribute('data-edit-idx', i); }
-  const addTitle = document.getElementById('ms-add-title');
-  if (addTitle) addTitle.textContent = 'Edit session';
-  // Scroll to top
-  const panel = document.querySelector('#manageSessionsSheet [style*="overflow-y:auto"]');
-  if (panel) panel.scrollTop = 0;
+
+  const inputStyle = 'border:1px solid #1D6B45;border-radius:6px;padding:5px 8px;font-size:12px;width:100%;box-sizing:border-box;';
+  tr.innerHTML = `
+    <td style="padding:8px 10px;color:#9ca3af;font-size:12px;">${row.sessionNum}</td>
+    <td style="padding:8px 10px;"><input type="date" id="ms-inline-date-${i}" value="${row.sortKey}" style="${inputStyle}"></td>
+    <td style="padding:8px 10px;"><input type="time" id="ms-inline-time-${i}" value="${timeVal}" style="${inputStyle}"></td>
+    <td style="padding:8px 10px;font-size:12px;color:#6b7280;">${row.instructor}</td>
+    <td style="padding:8px 10px;"></td>
+    <td style="padding:8px 10px;white-space:nowrap;">
+      <button onclick="msSaveInlineEdit(${i})" style="padding:4px 12px;background:#1D6B45;color:white;border:none;border-radius:5px;cursor:pointer;font-size:12px;font-weight:600;margin-right:4px;">Save</button>
+      <button onclick="renderMsTable()" style="padding:4px 10px;background:none;border:1px solid #d1d5db;border-radius:5px;cursor:pointer;font-size:12px;color:#374151;">Cancel</button>
+    </td>`;
 }
 
-function msDeleteSession(i) {
-  _msPendingDeleteIdx = i;
-  const row = getMsStore()[i];
-  const hasData = row.attended !== null || row.registered !== null;
-  document.getElementById('msDeleteMsg').textContent = hasData
-    ? '⚠️ This session has attendance data logged. Deleting it will remove that data permanently.'
-    : `Session ${row.sessionNum} on ${row.date} will be removed.`;
-  const confirmEl = document.getElementById('msDeleteConfirm');
-  confirmEl.style.display = 'flex';
-  document.getElementById('msDeleteConfirmBtn').onclick = () => {
-    getMsStore().splice(_msPendingDeleteIdx, 1);
-    getMsStore().forEach((r, i) => r.sessionNum = i + 1); // renumber
-    confirmEl.style.display = 'none';
-    renderMsTable();
-  };
+function msSaveInlineEdit(i) {
+  var dateEl = document.getElementById('ms-inline-date-' + i);
+  var timeEl = document.getElementById('ms-inline-time-' + i);
+  var instrEl = document.getElementById('ms-inline-instr-' + i);
+
+  if (!dateEl) { renderMsTable(); return; }
+
+  var store = getMsStore();
+  var classIdx = window._msClassIdx || 0;
+  var className = (getS6Store()[classIdx] || {}).title || '';
+  var rows = store.filter(function(r) { return !className || r.program === className; });
+  var row = rows[i];
+  if (!row) { renderMsTable(); return; }
+
+  // Save date
+  if (dateEl.value) {
+    var d = new Date(dateEl.value + 'T12:00:00');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    row.date = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    row.sortKey = dateEl.value;
+  }
+
+  // Save time
+  if (timeEl && timeEl.value) {
+    var parts = timeEl.value.split(':');
+    var h = parseInt(parts[0]);
+    var mins = parts[1] || '00';
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var h12 = h % 12 || 12;
+    row.time = h12 + ':' + mins + ' ' + ampm;
+  }
+
+  // Instructor is locked at class level — not editable per session
+
+  // Re-sort and renumber
+  store.sort(function(a, b) { return a.sortKey.localeCompare(b.sortKey); });
+  store.forEach(function(r, idx) { r.sessionNum = idx + 1; });
+
+  renderMsTable();
+  showToast('Session updated');
 }
+
 
 function msAddOrUpdate() {
   const btn = document.getElementById('ms-add-btn');
@@ -4244,7 +4672,6 @@ function msAddOrUpdate() {
     const i = parseInt(editIdx);
     const dateVal = document.getElementById('ms-add-date').value;
     const timeVal = document.getElementById('ms-add-time').value;
-    const instrVal = document.getElementById('ms-add-instructor').value.trim();
     if (!dateVal) { const err = document.getElementById('ms-add-error'); if(err){err.textContent='Please pick a date.';err.style.display='block';} return; }
     // Format time
     const [hh, mm] = timeVal.split(':');
@@ -4254,10 +4681,9 @@ function msAddOrUpdate() {
     // Format date
     const d = new Date(dateVal + 'T12:00:00');
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     store[i].date = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
     store[i].time = timeStr;
-    store[i].instructor = instrVal || store[i].instructor;
+    // Instructor stays locked from class — not updated here
     store[i].sortKey = dateVal;
     // Sort by date
     store.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
@@ -4265,7 +4691,6 @@ function msAddOrUpdate() {
     // Reset form
     document.getElementById('ms-add-date').value = '';
     document.getElementById('ms-add-time').value = '17:30';
-    document.getElementById('ms-add-instructor').value = '';
     if (btn) { btn.textContent = '+ Add'; btn.setAttribute('data-edit-idx', ''); }
     const title = document.getElementById('ms-add-title');
     if (title) title.textContent = 'Add a session';
@@ -4278,23 +4703,33 @@ function msAddOrUpdate() {
 }
 
 function msAddSession() {
-  const date = document.getElementById('ms-add-date').value;
-  const time = document.getElementById('ms-add-time').value;
-  const instructor = document.getElementById('ms-add-instructor').value.trim();
-  const errEl = document.getElementById('ms-add-error');
+  var date = document.getElementById('ms-add-date').value;
+  var time = document.getElementById('ms-add-time').value;
+  var errEl = document.getElementById('ms-add-error');
   if (!date) { errEl.textContent = 'Please pick a date.'; errEl.style.display = 'block'; return; }
-  const store = getMsStore();
-  const duplicate = store.some(r => r.date === new Date(date + 'T12:00:00').toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'}));
+  var store = getMsStore();
+  var classIdx = window._msClassIdx || 0;
+  var classItem = getS6Store()[classIdx];
+  var className = classItem ? classItem.title : '';
+  var instructor = classItem ? (classItem.instructor || 'TBD') : 'TBD';
+  var duplicate = store.some(function(r) { return r.sortKey === date; });
   if (duplicate) { errEl.textContent = 'A session already exists on this date.'; errEl.style.display = 'block'; return; }
   errEl.style.display = 'none';
-  const d = new Date(date + 'T12:00:00');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
-  store.push({ date: dateStr, sortKey: d.getTime(), program: 'Custom', programIdx: 0, registered: null, attended: null, status: 'upcoming', sessionNum: 0, time: time || '5:30 PM', instructor: instructor || 'TBD', notes: '' });
-  store.sort((a, b) => a.sortKey - b.sortKey);
-  store.forEach((r, i) => r.sessionNum = i + 1);
+  var d = new Date(date + 'T12:00:00');
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  // Format time
+  var timeStr = '5:30 PM';
+  if (time) {
+    var tparts = time.split(':');
+    var h = parseInt(tparts[0]); var m = tparts[1] || '00';
+    var ampm = h >= 12 ? 'PM' : 'AM'; var h12 = h % 12 || 12;
+    timeStr = h12 + ':' + m + ' ' + ampm;
+  }
+  store.push({ date: dateStr, sortKey: date, program: className, programIdx: 0, registered: null, attended: null, status: 'upcoming', sessionNum: 0, time: timeStr, instructor: instructor, notes: '' });
+  store.sort(function(a, b) { return a.sortKey.localeCompare(b.sortKey); });
+  store.forEach(function(r, i) { r.sessionNum = i + 1; });
   document.getElementById('ms-add-date').value = '';
-  document.getElementById('ms-add-instructor').value = '';
   renderMsTable();
 }
 
@@ -4313,6 +4748,7 @@ function saveManageSessions() {
 // ── Init s2 form with default age group ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   loadS2Classes('elementary');
+  openGroupActivities();
 });
 
 </script>
@@ -4324,33 +4760,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <!-- Header -->
     <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #e5e7eb;flex-shrink:0;">
       <div>
-        <div style="font-size:16px;font-weight:700;color:#111827;">Manage Sessions</div>
-        <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
+        <div id="ms-sheet-title" style="font-size:16px;font-weight:700;color:#111827;">Manage Sessions</div>
+        <div id="ms-sheet-subtitle" style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
       </div>
-      <div onclick="closeManageSessions()" style="cursor:pointer;color:#9ca3af;font-size:22px;line-height:1;">×</div>
-    </div>
-
-    <!-- Add session row — pinned at top -->
-    <div style="padding:14px 24px;border-bottom:1px solid #e5e7eb;background:#fafafa;flex-shrink:0;">
-      <div id="ms-add-title" style="font-size:12px;font-weight:600;color:#374151;margin-bottom:10px;">Add a session</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;">
-        <div>
-          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Date</label>
-          <input type="date" id="ms-add-date" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
-        </div>
-        <div>
-          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Time</label>
-          <input type="time" id="ms-add-time" value="17:30" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
-        </div>
-        <div>
-          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Instructor</label>
-          <input type="text" id="ms-add-instructor" placeholder="Name" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
-        </div>
-        <div>
-          <button id="ms-add-btn" data-edit-idx="" onclick="msAddOrUpdate()" style="padding:8px 18px;background:#1D6B45;color:white;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">+ Add</button>
-        </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button onclick="openSessionModal()" style="padding:7px 14px;background:#1D6B45;color:white;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;">+ Add session</button>
+        <div onclick="closeManageSessions()" style="cursor:pointer;color:#9ca3af;font-size:22px;line-height:1;">×</div>
       </div>
-      <div id="ms-add-error" style="display:none;font-size:11px;color:#dc2626;margin-top:6px;"></div>
     </div>
 
     <!-- Session list -->
@@ -4361,7 +4777,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">#</th>
             <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Date</th>
             <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Day · Time</th>
-            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Program</th>
             <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Instructor</th>
             <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Status</th>
             <th style="padding:8px 10px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;"></th>
@@ -4375,6 +4790,65 @@ document.addEventListener('DOMContentLoaded', () => {
     <div style="display:flex;gap:10px;justify-content:flex-end;padding:16px 24px;border-top:1px solid #e5e7eb;flex-shrink:0;">
       <button onclick="closeManageSessions()" style="padding:9px 20px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
       <button onclick="saveManageSessions()" style="padding:9px 20px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add / Edit session modal -->
+<div id="msSessionModal" style="display:none;position:fixed;inset:0;z-index:4500;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;" onclick="if(event.target===this)closeMsSessionModal()">
+  <div style="background:white;border-radius:16px;width:440px;box-shadow:0 12px 40px rgba(0,0,0,0.18);overflow:hidden;display:flex;flex-direction:column;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #e5e7eb;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="msSessionModalTitle" style="font-size:15px;font-weight:700;color:#111;">Add session</span>
+        <span id="msSessionModalBadge" style="background:#dcfce7;color:#166534;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;">Active</span>
+      </div>
+      <div onclick="closeMsSessionModal()" style="cursor:pointer;color:#9ca3af;font-size:20px;line-height:1;padding:2px 4px;">×</div>
+    </div>
+
+    <!-- Content area — dashed card -->
+    <div style="padding:18px 22px;">
+      <div style="border:1.5px dashed #d1d5db;border-radius:10px;background:#f9fafb;padding:18px 18px 14px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <!-- Day -->
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#6b7280;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px;">Day</label>
+            <select id="msm-day" onchange="msmDayChanged()" style="width:100%;padding:8px 10px;border:1px solid #e5e7eb;border-radius:7px;font-size:13px;background:white;box-sizing:border-box;color:#111;">
+              <option value="">— pick day —</option>
+              <option value="Mon">Monday</option>
+              <option value="Tue">Tuesday</option>
+              <option value="Wed">Wednesday</option>
+              <option value="Thu">Thursday</option>
+              <option value="Fri">Friday</option>
+              <option value="Sat">Saturday</option>
+              <option value="Sun">Sunday</option>
+            </select>
+          </div>
+          <!-- Date -->
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#6b7280;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px;">Date</label>
+            <input type="date" id="msm-date" onchange="msmDateChanged()" style="width:100%;padding:8px 10px;border:1px solid #e5e7eb;border-radius:7px;font-size:13px;box-sizing:border-box;color:#111;">
+          </div>
+          <!-- Time -->
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#6b7280;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px;">Time</label>
+            <input type="time" id="msm-time" value="17:30" style="width:100%;padding:8px 10px;border:1px solid #e5e7eb;border-radius:7px;font-size:13px;box-sizing:border-box;color:#111;">
+          </div>
+          <!-- Instructor -->
+          <div>
+            <label style="font-size:11px;font-weight:600;color:#6b7280;display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px;">Instructor</label>
+            <input type="text" id="msm-instructor" placeholder="Name" style="width:100%;padding:8px 10px;border:1px solid #e5e7eb;border-radius:7px;font-size:13px;box-sizing:border-box;color:#111;">
+          </div>
+        </div>
+        <div id="msm-error" style="display:none;font-size:12px;color:#dc2626;margin-top:12px;"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid #f3f4f6;">
+      <button onclick="closeMsSessionModal()" style="padding:9px 24px;border:1.5px solid #e5e7eb;background:white;color:#374151;border-radius:30px;font-size:13px;font-weight:500;cursor:pointer;">Cancel</button>
+      <button onclick="saveMsSessionModal()" style="padding:9px 28px;background:#1D6B45;color:white;border:none;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;">Save</button>
     </div>
   </div>
 </div>
