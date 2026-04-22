@@ -756,18 +756,14 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
   <span>Demo:</span>
   <select id="screenSelect" onchange="goTo(this.value)">
     <option value="s1">1 · KidCreate Website</option>
-    <option value="s2">4 · Interest Form (modal open)</option>
+    <option value="s2">2 · Interest Form (modal open)</option>
     <option value="s3">3 · Submission Received (popup)</option>
     <option value="sA1">4 · School Gmail — Confirmation Email</option>
-    <option value="sA2">5 · School — Project Selection</option>
-    <option value="sKC1">6 · Kidcreate Gmail — Staff Notification</option>
-    <option value="s4">7 · Kid Create Gmail — Studio Notification</option>
-    <option value="s5">9 · MyStudio — Partnerships Table (Requested)</option>
-    <option value="s6">10 · Partnership Detail — Ashburn × Oak View</option>
-    <option value="s7">11 · Waiver Editor</option>
-    <option value="s9">12 · School Gmail — Proposal Email</option>
-    <option value="s10">13 · School — Signature Page</option>
-    <option value="s11">14 · MyStudio — Partnerships Table</option>
+    <option value="sKC1">5 · Kidcreate Gmail — Staff Notification</option>
+    <option value="s6">6 · Partnership Detail — Ashburn × Oak View</option>
+    <option value="s7">7 · Waiver Editor</option>
+    <option value="s10">8 · School — Signature Page</option>
+    <option value="s11">9 · MyStudio — Partnerships Table</option>
     <option value="s12">15 · Partnership Detail — Active</option>
     <option value="s13">16 · Invoice Preview Modal</option>
     <option value="s14">17 · Payments — Invoices Tab</option>
@@ -1029,15 +1025,15 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
         <h2>On-the-go <em>for Kids</em></h2>
         <div class="modal-sub">Request more info below</div>
         <div class="f-row">
-          <div class="f-group"><label>First name <span class="req">*</span></label><input placeholder="First name" value="Sarah"></div>
-          <div class="f-group"><label>Last name <span class="req">*</span></label><input placeholder="Last name" value="Johnson"></div>
+          <div class="f-group"><label>First name <span class="req">*</span></label><input id="s2-fname" placeholder="First name" value="Sarah"></div>
+          <div class="f-group"><label>Last name <span class="req">*</span></label><input id="s2-lname" placeholder="Last name" value="Johnson"></div>
         </div>
         <div class="f-row">
-          <div class="f-group"><label>Organization <span class="req">*</span></label><input placeholder="Organization name" value="Oak View Elementary"></div>
+          <div class="f-group"><label>Organization <span class="req">*</span></label><input id="s2-org" placeholder="Organization name" value="Oak View Elementary"></div>
           <div class="f-group"><label>Mobile number <span class="req">*</span></label><input placeholder="+12345678910" value="(703) 555-0192"></div>
         </div>
         <div class="f-row">
-          <div class="f-group full"><label>Email <span class="req">*</span></label><input placeholder="you@company.com" value="sjohnson@oakview.edu"></div>
+          <div class="f-group full"><label>Email <span class="req">*</span></label><input id="s2-email" placeholder="you@company.com" value="sjohnson@oakview.edu"></div>
         </div>
         <div class="f-row">
           <div class="f-group full"><label>Preferred days, times, and frequency for the classes <span class="req">*</span></label><textarea placeholder="Enter">Tuesdays and Thursdays at 5:30 PM starting April 2026.</textarea></div>
@@ -1054,13 +1050,12 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           </div>
           <div class="f-group" style="flex:1;">
             <label>Age group <span class="req">*</span></label>
-            <select style="border:1.5px solid #d1d5db; border-radius:6px; padding:9px 12px; font-size:13px; color:#111; background:white; width:100%; cursor:pointer;">
+            <select id="s2-age-select" onchange="loadS2Classes(this.value)" style="border:1.5px solid #d1d5db; border-radius:6px; padding:9px 12px; font-size:13px; color:#111; background:white; width:100%; cursor:pointer;">
               <option value="">Select age group</option>
-              <option value="toddler">Toddler</option>
-              <option value="preschool" selected>Preschool Age</option>
-              <option value="elementary">Elementary Age</option>
-              <option value="tweens">Tweens &amp; Teens</option>
-              <option value="adults">Adults &amp; Seniors</option>
+              <option value="toddler">Toddler (18 mo – 3 yrs)</option>
+              <option value="preschool">Preschool (3 – 5 yrs)</option>
+              <option value="elementary" selected>School Age (6 – 12 yrs)</option>
+              <option value="tweens">Tweens &amp; Teens (12 – 17 yrs)</option>
             </select>
           </div>
         </div>
@@ -1069,78 +1064,87 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           <div class="f-section-label" style="margin-bottom:0;">Available programs at this location: <span class="req">*</span></div>
           <span id="locationTag" style="font-size:11px; background:#e8f4ed; color:#1D6B45; border-radius:20px; padding:2px 10px; font-weight:600;">Ashburn, VA</span>
         </div>
-        <div id="classAccordionContainer" style="margin-bottom:18px;">
+        <!-- Programs section -->
+        <div style="margin-bottom:18px;">
 
+          <!-- Group Activities accordion with class checkboxes -->
           <div class="cb-accordion">
-            <div class="cb-accordion-header" onclick="toggleAccordion('acc-reg')">
-              <input type="checkbox" checked onclick="event.stopPropagation()">
-              <div class="cb-accordion-name">Registration Based Classes</div>
-              <div class="cb-accordion-brief">Weekly classes & camps, families register</div>
-              <div class="cb-chevron open" id="acc-reg-chevron">▾</div>
-            </div>
-            <div class="cb-accordion-body open" id="acc-reg">
-              <p>We'll send you a proposal packed with our award-winning art classes and camps. You select which activities your program will offer, we finalize the details, and families can then register their children directly for all those awesome art classes.</p>
-              <div class="cb-accordion-meta">
-                <div class="cb-accordion-meta-item"><strong>Best for:</strong> Schools & daycares</div>
-                <div class="cb-accordion-meta-item"><strong>Ages:</strong> 3–14</div>
-                <div class="cb-accordion-meta-item"><strong>Min enrollment:</strong> 6 students</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="cb-accordion">
-            <div class="cb-accordion-header" onclick="toggleAccordion('acc-group')">
-              <input type="checkbox" checked onclick="event.stopPropagation()">
+            <div class="cb-accordion-header" onclick="toggleAccordion('acc-group-act')">
               <div class="cb-accordion-name">Group Activities</div>
-              <div class="cb-accordion-brief">Field trips, non-school days, art at your location</div>
-              <div class="cb-chevron" id="acc-group-chevron">▾</div>
+              <div class="cb-accordion-brief">Art programs delivered at your location</div>
+              <div class="cb-chevron open" id="acc-group-act-chevron">▾</div>
             </div>
-            <div class="cb-accordion-body" id="acc-group">
-              <p>Bring the kids to Kidcreate Studio for a fun art-themed field trip, or we send our teachers to you for an activity right at your location. Perfect boredom busters for non-school days and school breaks.</p>
-              <div class="cb-accordion-meta">
-                <div class="cb-accordion-meta-item"><strong>Best for:</strong> Daycares, preschools, care programs</div>
-                <div class="cb-accordion-meta-item"><strong>Ages:</strong> All ages</div>
-                <div class="cb-accordion-meta-item"><strong>Min group size:</strong> 10</div>
+            <div class="cb-accordion-body open" id="acc-group-act">
+              <p style="font-size:12px;color:#6b7280;margin-bottom:12px;">Programs matched to your selected age group — check all that apply.</p>
+              <div id="s2-class-list" style="display:flex;flex-direction:column;gap:8px;">
+                <!-- Populated by loadS2Classes() -->
               </div>
+              <div id="s2-no-age" style="font-size:13px;color:#9ca3af;padding:8px 0;">Select an age group above to see matching programs.</div>
             </div>
           </div>
 
+          <!-- Community Events accordion -->
           <div class="cb-accordion">
-            <div class="cb-accordion-header" onclick="toggleAccordion('acc-community')">
-              <input type="checkbox" onclick="event.stopPropagation()">
+            <div class="cb-accordion-header" onclick="toggleAccordion('acc-community2')">
               <div class="cb-accordion-name">Community Events</div>
-              <div class="cb-accordion-brief">Carnivals, festivals, fundraisers</div>
-              <div class="cb-chevron" id="acc-community-chevron">▾</div>
+              <div class="cb-accordion-brief">Carnivals, festivals, art stations at your event</div>
+              <div class="cb-chevron" id="acc-community2-chevron">▾</div>
             </div>
-            <div class="cb-accordion-body" id="acc-community">
-              <p>We help inspire artists young and old at your next community event with an art activity station. A wonderful addition to school carnivals, festivals, dances, and fundraisers — we work with you to make your event extra awesome.</p>
-              <div class="cb-accordion-meta">
-                <div class="cb-accordion-meta-item"><strong>Best for:</strong> Community programs, parks & rec</div>
-                <div class="cb-accordion-meta-item"><strong>Ages:</strong> All ages</div>
-                <div class="cb-accordion-meta-item"><strong>Capacity:</strong> 50–200 participants</div>
-              </div>
+            <div class="cb-accordion-body" id="acc-community2">
+              <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:10px;">We set up an art activity station at your school carnival, festival, or fundraiser. Great addition for 50–200 participants of all ages.</p>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px;border:1.5px solid #e5e7eb;border-radius:8px;background:white;">
+                <input type="checkbox" style="accent-color:#2d6b3e;width:15px;height:15px;flex-shrink:0;">
+                <div><div style="font-size:13px;font-weight:600;color:#111;">Art Activity Station</div><div style="font-size:11px;color:#9ca3af;">All ages · 50–200 participants</div></div>
+              </label>
             </div>
           </div>
 
+          <!-- Art Kits accordion -->
           <div class="cb-accordion">
-            <div class="cb-accordion-header" onclick="toggleAccordion('acc-artkits')">
-              <input type="checkbox" onclick="event.stopPropagation()">
+            <div class="cb-accordion-header" onclick="toggleAccordion('acc-artkits2')">
               <div class="cb-accordion-name">Art Kits</div>
-              <div class="cb-accordion-brief">On-demand kits with instructional videos</div>
-              <div class="cb-chevron" id="acc-artkits-chevron">▾</div>
+              <div class="cb-accordion-brief">Take-home kits with instructional videos</div>
+              <div class="cb-chevron" id="acc-artkits2-chevron">▾</div>
             </div>
-            <div class="cb-accordion-body" id="acc-artkits">
-              <p>Kidcreate art kits come with on-demand instructional videos — like having your very own private art teacher. Each kit includes an easy-to-follow art lesson, a link to a video taught by a Kidcreate art teacher, and all the art supplies needed to create the project.</p>
-              <div class="cb-accordion-meta">
-                <div class="cb-accordion-meta-item"><strong>Best for:</strong> Take-home, scout troops, church groups</div>
-                <div class="cb-accordion-meta-item"><strong>Ages:</strong> All ages</div>
-                <div class="cb-accordion-meta-item"><strong>Format:</strong> Self-directed</div>
-              </div>
+            <div class="cb-accordion-body" id="acc-artkits2">
+              <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:10px;">Each kit includes art supplies and a video lesson taught by a Kidcreate teacher. Perfect for scout troops, church groups, and take-home programs.</p>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px;border:1.5px solid #e5e7eb;border-radius:8px;background:white;">
+                <input type="checkbox" style="accent-color:#2d6b3e;width:15px;height:15px;flex-shrink:0;">
+                <div><div style="font-size:13px;font-weight:600;color:#111;">Art Kit Bundle</div><div style="font-size:11px;color:#9ca3af;">All ages · Self-directed</div></div>
+              </label>
             </div>
           </div>
 
         </div>
-        <button class="apply-btn" onclick="goTo('s3')">Submit</button>
+
+        <!-- View More Info Modal -->
+        <div id="classInfoModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9000;align-items:center;justify-content:center;padding:24px;">
+          <div style="background:white;border-radius:16px;width:100%;max-width:420px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.2);">
+            <div style="position:relative;height:180px;overflow:hidden;">
+              <img src="https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=600&auto=format&fit=crop&q=80" style="width:100%;height:100%;object-fit:cover;">
+              <button onclick="document.getElementById('classInfoModal').style.display='none'" style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.5);color:white;border:none;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;">×</button>
+            </div>
+            <div style="padding:20px 24px 24px;">
+              <div style="font-size:17px;font-weight:800;color:#111;margin-bottom:4px;">Science Magic</div>
+              <div style="font-size:12px;color:#1D6B45;font-weight:600;margin-bottom:12px;">Group Activities · Ages 6–12</div>
+              <p style="font-size:13px;color:#374151;line-height:1.6;margin-bottom:14px;">Kids explore the intersection of STEAM and art — chemical reactions make paintings bloom, physics experiments become sculptures, and every project surprises. No two sessions look the same.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">
+                <div style="background:#f9fafb;border-radius:8px;padding:10px;"><div style="font-size:10px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;">Duration</div><div style="font-size:13px;font-weight:600;color:#111;margin-top:2px;">60 min / session</div></div>
+                <div style="background:#f9fafb;border-radius:8px;padding:10px;"><div style="font-size:10px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;">Min enrollment</div><div style="font-size:13px;font-weight:600;color:#111;margin-top:2px;">6 students</div></div>
+                <div style="background:#f9fafb;border-radius:8px;padding:10px;"><div style="font-size:10px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;">What they make</div><div style="font-size:13px;font-weight:600;color:#111;margin-top:2px;">Reaction paintings, sculptures</div></div>
+                <div style="background:#f9fafb;border-radius:8px;padding:10px;"><div style="font-size:10px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;">Materials</div><div style="font-size:13px;font-weight:600;color:#111;margin-top:2px;">All included</div></div>
+              </div>
+              <button onclick="document.getElementById('classInfoModal').style.display='none'" style="width:100%;background:#1D6B45;color:white;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Got it</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submission toast -->
+        <div id="s2-toast" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#111827;color:white;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.25);align-items:center;gap:10px;">
+          <span style="font-size:16px;">✅</span> Request submitted! We'll be in touch within 1–2 business days.
+        </div>
+
+        <button class="apply-btn" onclick="submitS2Form()">Submit request →</button>
       </div>
     </div>
   </div>
@@ -1170,7 +1174,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
         <div style="padding:28px 32px 32px;">
           <div style="font-size:32px; margin-bottom:8px;">🎨</div>
           <div style="font-size:22px; font-weight:800; color:#111; margin-bottom:8px;">You're all set!</div>
-          <div style="font-size:14px; color:#6b7280; line-height:1.6; margin-bottom:24px;">Two emails have been sent automatically — one to <strong style="color:#374151;">Kidcreate Ashburn</strong> notifying them of your interest, and one to <strong style="color:#374151;">sjohnson@oakview.edu</strong> with a link to select your art programs.</div>
+          <div style="font-size:14px; color:#6b7280; line-height:1.6; margin-bottom:24px;">We've received your request and notified the Kidcreate Ashburn team. Someone will be in touch within <strong style='color:#374151;'>1–2 business days</strong> to confirm details and next steps.</div>
           <button onclick="document.getElementById('s3-ty-modal').style.display='none'; goTo('sA1')" style="width:100%; background:#1D6B45; color:white; border:none; padding:13px 24px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:0.2px;">Got it, thanks! →</button>
         </div>
       </div>
@@ -1305,6 +1309,44 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
 <!-- ══════════════════════════════════════════
   SCREEN KC1 · Kidcreate Gmail — Staff Notification Email
 ══════════════════════════════════════════ -->
+<div class="screen" <div style="background:white; border:1px solid #e5e7eb; border-top:none; border-radius:0 0 12px 12px; padding:28px 32px;">
+                <p style="font-size:16px; font-weight:600; color:#111; margin-bottom:8px;">New partnership request 🎨</p>
+                <p style="font-size:13px; color:#374151; line-height:1.6; margin-bottom:20px;">A new partnership request just came in. Review the details below and reach out within 1–2 business days.</p>
+
+                <div id="sKC1-info-box" style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 16px; margin-bottom:20px; font-size:12px; color:#6b7280;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">School</span><span id="sKC1-school">Oak View Elementary</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Contact</span><span id="sKC1-contact">Sarah Johnson · sjohnson@oakview.edu</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Age group</span><span id="sKC1-age">School Age (6–12 yrs)</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Location</span><span id="sKC1-location">Kidcreate Studio – Ashburn, VA</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Preferred schedule</span><span id="sKC1-schedule" style="text-align:right;max-width:55%;">Tuesdays and Thursdays at 5:30 PM</span></div>
+                  <div style="border-top:1px solid #e5e7eb;margin-top:8px;padding-top:8px;">
+                    <span style="color:#111; font-weight:600;display:block;margin-bottom:4px;">Category</span>
+                    <span id="sKC1-category" style="font-size:11px;background:#dcfce7;color:#166534;border-radius:20px;padding:2px 10px;font-weight:600;">Group Activities</span>
+                  </div>
+                  <div style="margin-top:10px;">
+                    <span style="color:#111; font-weight:600;display:block;margin-bottom:6px;">Classes selected</span>
+                    <div id="sKC1-programs" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+                  </div>
+                </div>
+
+                <a href="#" onclick="goTo('s6');return false;" style="display:block;background:#1D6B45;color:white;border:none;padding:12px 24px;border-radius:8px;font-size:13px;font-weight:600;text-align:center;text-decoration:none;margin-bottom:20px;">View in MyStudio →</a>
+
+                <div style="border-top:1px solid #f3f4f6; padding-top:16px; font-size:11px; color:#9ca3af; text-align:center; line-height:1.7;">
+                  Kid Create Studio · Internal notification<br>
+                  20937 Ashburn Road, Ashburn VA 20147
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+  SCREEN sKC1 · Kidcreate Gmail — Staff Notification
+══════════════════════════════════════════ -->
 <div class="screen" id="sKC1">
   <div class="gmail-app">
     <div class="gmail-topbar">
@@ -1382,7 +1424,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
       </div>
       <div class="gmail-search-wrap">
         <span style="color:#5f6368;">🔍</span>
-        <input value="We received your request — Kidcreate Studio">
+        <input value="Your partnership request has been received — Kidcreate Studio">
         <span style="color:#5f6368;margin-left:auto;">⚙</span>
       </div>
       <div class="gmail-user-icons">
@@ -1418,7 +1460,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           <div class="gmail-count">1–3 of 3 <span>‹</span> <span>›</span></div>
         </div>
         <div class="gmail-thread-header">
-          <span class="gmail-thread-title">We received your request — here's how to select your art programs</span>
+          <span class="gmail-thread-title">Your partnership request has been received — Kidcreate Studio Ashburn</span>
           <span class="gmail-tag">Inbox</span>
           <div class="gmail-thread-icons" style="margin-left:auto">
             <div class="gmail-tool-btn">🖨</div>
@@ -1445,19 +1487,15 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
               <div style="background:white; border:1px solid #e5e7eb; border-top:none; border-radius:0 0 12px 12px; padding:28px 32px;">
                 <p style="font-size:16px; font-weight:600; color:#111; margin-bottom:8px;">Hi Sarah 👋</p>
                 <p style="font-size:13px; color:#374151; line-height:1.6; margin-bottom:16px;">We received your partnership request for <strong>Oak View Elementary</strong> and we're excited to work with you!</p>
-                <p style="font-size:13px; color:#374151; line-height:1.6; margin-bottom:20px;">We've put together a collection of art projects perfectly suited for <strong>Preschool Age</strong> students. Click below to browse and select the programs you'd like to include in your custom proposal.</p>
+                <p style="font-size:13px; color:#374151; line-height:1.6; margin-bottom:20px;">Our team will review your submission and reach out within <strong>1–2 business days</strong> to confirm details and get your partnership set up.</p>
 
-                <div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 16px; margin-bottom:20px; font-size:12px; color:#6b7280;">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">School</span><span>Oak View Elementary</span></div>
-                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Age group</span><span>Preschool Age</span></div>
-                  <div style="display:flex; justify-content:space-between;"><span style="color:#111; font-weight:600;">Programs interested in</span><span>Registration Based Classes, Group Activities</span></div>
-                </div>
-
-                <div style="text-align:center; margin-bottom:24px;">
-                  <button onclick="goTo('sA2')" style="background:#1D6B45; color:white; border:none; padding:14px 32px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
-                    🎨 Select your art projects →
-                  </button>
-                  <div style="font-size:11px; color:#9ca3af; margin-top:8px;">Takes about 2 minutes</div>
+                <div id="sA1-info-box" style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px 16px; margin-bottom:20px; font-size:12px; color:#6b7280;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">School</span><span id="sA1-school">Oak View Elementary</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Contact</span><span id="sA1-contact">Sarah Johnson</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Age group</span><span id="sA1-age">School Age (6–12 yrs)</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Location</span><span id="sA1-location">Kidcreate Studio – Ashburn, VA</span></div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:#111; font-weight:600;">Preferred schedule</span><span id="sA1-schedule" style="text-align:right;max-width:60%;">Tuesdays and Thursdays at 5:30 PM</span></div>
+                  <div style="border-top:1px solid #e5e7eb;margin-top:8px;padding-top:8px;"><span style="color:#111; font-weight:600;display:block;margin-bottom:6px;">Programs selected</span><div id="sA1-programs" style="display:flex;flex-wrap:wrap;gap:4px;"></div></div>
                 </div>
 
                 <div style="border-top:1px solid #f3f4f6; padding-top:16px; font-size:11px; color:#9ca3af; text-align:center; line-height:1.7;">
@@ -2103,6 +2141,16 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           </div>
         </div>
 
+        <div id="s6-nav-attendance" onclick="showPdTab('s6','attendance')" style="display:flex; align-items:center; gap:12px; padding:12px 16px; cursor:pointer;">
+          <span style="color:#6b7280; flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="23 11 17 11"/><line x1="20" y1="8" x2="20" y2="14"/></svg>
+          </span>
+          <div>
+            <div style="font-size:13px; font-weight:600; color:#374151;">Attendance</div>
+            <div style="font-size:11px; color:#6b7280; margin-top:1px;">Track session attendance</div>
+          </div>
+        </div>
+
         <div id="s6-nav-waiver" onclick="showPdTab('s6','waiver')" style="display:flex; align-items:center; gap:12px; padding:12px 16px; cursor:pointer;">
           <span style="color:#6b7280; flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -2168,7 +2216,10 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           <div style="background:white; border:1px solid #e5e7eb; border-radius:10px; padding:24px;">
             <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid #f3f4f6;">
               <div style="font-size:16px; font-weight:700; color:#111827;">Sessions</div>
-              <button onclick="openAddSessionSheet()" style="padding:7px 16px; background:#1D6B45; color:white; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">+ Add session</button>
+              <div style="display:flex;gap:8px;">
+                <button onclick="openManageSessionsSheet()" style="padding:7px 16px; background:white; color:#374151; border:1px solid #e5e7eb; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">Manage sessions</button>
+                <button onclick="openAddSessionSheet()" style="padding:7px 16px; background:#1D6B45; color:white; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;">+ Add session</button>
+              </div>
             </div>
             <!-- Session filter tabs -->
             <div style="display:flex; gap:0; border-bottom:2px solid #e5e7eb; margin-bottom:18px;">
@@ -2186,6 +2237,25 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
 
             <div id="s6-sess-past-empty" style="display:none; padding:24px; text-align:center; color:#9ca3af; font-size:13px;">No past sessions for this partnership yet.</div>
             <div id="s6-sess-footer" style="font-size:12px;color:#9ca3af;margin-top:12px;">Showing 2 sessions · Total value: $2,550</div>
+          </div>
+        </div>
+
+        <!-- ATTENDANCE TAB (mirrored from s12) -->
+        <div id="s6-attendance" style="display:none;">
+          <div style="background:white;border:1px solid #e5e7eb;border-radius:10px;padding:24px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <div>
+                <div style="font-size:16px;font-weight:700;color:#111827;">Attendance Tracking</div>
+                <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
+              </div>
+            </div>
+            <div class="ms-table-wrap">
+              <table class="ms-table">
+                <thead><tr><th>Date</th><th>Program</th><th>Registered</th><th>Attended</th><th>Status</th></tr></thead>
+                <tbody id="s6-attendance-tbody"></tbody>
+              </table>
+            </div>
+            <div style="font-size:12px;color:#9ca3af;margin-top:12px;">Sessions will appear here once the partnership is active.</div>
           </div>
         </div>
 
@@ -2248,64 +2318,98 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
     </div>
 
     <!-- Add Session Sheet -->
-    <div id="addSessionSheet" style="display:none;position:fixed;top:0;right:0;bottom:0;width:420px;background:white;box-shadow:-4px 0 24px rgba(0,0,0,0.12);z-index:1000;flex-direction:column;">
-      <div style="padding:20px 24px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;">
+    <div id="addSessionSheet" style="display:none;position:fixed;top:42px;right:0;bottom:0;width:420px;background:white;box-shadow:-4px 0 24px rgba(0,0,0,0.12);z-index:1000;flex-direction:column;">
+      <div style="padding:20px 24px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
         <div id="sessionSheetTitle" style="font-size:16px;font-weight:700;color:#111827;">Add Session</div>
         <div style="cursor:pointer;color:#6b7280;font-size:20px;" onclick="document.getElementById('addSessionSheet').style.display='none'">×</div>
       </div>
       <input type="hidden" id="sessionEditIndex" value="">
-      <div style="padding:24px;flex:1;overflow-y:auto;">
+      <div style="padding:20px 24px;flex:1;overflow-y:auto;">
 
-        <!-- Class picker -->
         <div style="margin-bottom:16px;">
-          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Class <span style="color:#dc2626;">*</span></label>
-          <select id="sessionClassPicker" onchange="onSessionClassChange(this.value)" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;background:white;cursor:pointer;">
-            <option value="">Select a class…</option>
-            <option value="science-magic" selected>Science Magic</option>
-            <option value="teeny-treats">Teeny, Tiny Treats</option>
-            <option value="paint-party">Paint Party</option>
-            <option value="clay-day">Clay Day</option>
-          </select>
+          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Class name <span style="color:#dc2626;">*</span></label>
+          <input type="text" id="sessionClassPicker" placeholder="e.g. Science Magic" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
         </div>
 
-        <!-- Instructor — auto-populated from class -->
         <div style="margin-bottom:16px;">
-          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Instructor <span style="font-size:11px;color:#9ca3af;font-weight:400;">(auto-filled from class setup)</span></label>
-          <div id="sessionInstructorField" style="display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;background:#f9fafb;">
-            <span style="width:22px;height:22px;background:#e8f4ed;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1D6B45;">TL</span>
-            <span id="sessionInstructorName" style="font-size:13px;color:#374151;font-weight:500;">Tu Le</span>
-            <span style="font-size:11px;color:#9ca3af;margin-left:auto;">read only</span>
+          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Instructor <span style="color:#dc2626;">*</span></label>
+          <input type="text" id="sessionInstructorName" placeholder="e.g. Tu Le" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Start date <span style="color:#dc2626;">*</span></label>
+            <input type="date" id="sessionStartDate" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+          </div>
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">End date</label>
+            <input type="date" id="sessionEndDate" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
           </div>
         </div>
 
-        <div style="display:flex;gap:12px;margin-bottom:16px;">
-          <div style="flex:1;"><label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Start date <span style="color:#dc2626;">*</span></label><input id="sessionStartDate" type="date" value="2026-04-14" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;box-sizing:border-box;"></div>
-          <div style="flex:1;"><label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">End date <span style="color:#dc2626;">*</span></label><input type="date" value="2026-06-17" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;box-sizing:border-box;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Frequency</label>
+            <select id="sessionFrequency" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;background:white;cursor:pointer;">
+              <option value="weekly">Weekly</option>
+              <option value="biweekly">Bi-weekly</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">No. of sessions <span style="color:#dc2626;">*</span></label>
+            <input type="number" id="sessionNumClasses" min="1" value="10" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+          </div>
         </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Cost per student ($)</label>
+            <input type="number" id="sessionCostPerStudent" min="0" placeholder="e.g. 20" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+          </div>
+          <div>
+            <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Min. sessions</label>
+            <input type="number" id="sessionMinSessions" min="1" placeholder="e.g. 5" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+          </div>
+        </div>
+
         <div style="margin-bottom:16px;">
-          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:4px;">Schedule <span style="color:#dc2626;">*</span></label>
-          <div style="font-size:11px;color:#9ca3af;margin-bottom:6px;">From class setup — select an available time slot</div>
-          <select id="sessionSchedulePicker" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;background:white;cursor:pointer;">
-            <option value="tue-530">Tuesdays · 5:30 PM</option>
-            <option value="thu-530">Thursdays · 5:30 PM</option>
-            <option value="mon-400">Mondays · 4:00 PM</option>
-            <option value="wed-400">Wednesdays · 4:00 PM</option>
-            <option value="fri-330">Fridays · 3:30 PM</option>
-            <option value="sat-1000">Saturdays · 10:00 AM</option>
-          </select>
+          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Min. registration per class</label>
+          <input type="number" id="sessionMinReg" min="1" placeholder="e.g. 6" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
         </div>
-        <div style="display:flex;gap:12px;margin-bottom:16px;">
-          <div style="flex:1;"><label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">No. of classes <span style="color:#dc2626;">*</span></label><input id="sessionNumClasses" value="10" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;box-sizing:border-box;"></div>
-          <div style="flex:1;"><label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Cost per class <span style="color:#dc2626;">*</span></label><input value="$85" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;box-sizing:border-box;"></div>
+
+        <div style="margin-bottom:16px;">
+          <label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Schedule</label>
+          <div style="margin-bottom:10px;">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:6px;">Days</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;" id="sessionDayPicker">
+              <button type="button" data-day="Mon" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Mon</button>
+              <button type="button" data-day="Tue" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Tue</button>
+              <button type="button" data-day="Wed" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Wed</button>
+              <button type="button" data-day="Thu" onclick="toggleSessionDay(this)" class="session-day-active" style="padding:6px 12px;border-radius:20px;border:1.5px solid #1D6B45;background:#f0fdf4;font-size:12px;font-weight:600;color:#1D6B45;cursor:pointer;">Thu</button>
+              <button type="button" data-day="Fri" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Fri</button>
+              <button type="button" data-day="Sat" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Sat</button>
+              <button type="button" data-day="Sun" onclick="toggleSessionDay(this)" style="padding:6px 12px;border-radius:20px;border:1.5px solid #e5e7eb;background:white;font-size:12px;font-weight:500;color:#374151;cursor:pointer;">Sun</button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="flex:1;">
+              <div style="font-size:11px;color:#6b7280;margin-bottom:6px;">Start time</div>
+              <input type="time" id="sessionTimeStart" value="17:30" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:11px;color:#6b7280;margin-bottom:6px;">End time</div>
+              <input type="time" id="sessionTimeEnd" value="18:30" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;color:#111;">
+            </div>
+          </div>
         </div>
-        <div style="margin-bottom:16px;"><label style="font-size:12px;color:#374151;font-weight:500;display:block;margin-bottom:6px;">Last day to register <span style="color:#dc2626;">*</span></label><input type="date" value="2026-04-07" style="width:100%;padding:9px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;box-sizing:border-box;"></div>
+
       </div>
-      <div style="padding:16px 24px;border-top:1px solid #e5e7eb;display:flex;gap:10px;justify-content:flex-end;">
-        <button onclick="document.getElementById('addSessionSheet').style.display='none'" style="padding:7px 16px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
-        <button id="sessionSaveBtn" onclick="saveSessionSheet()" style="padding:7px 16px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Add session</button>
+      <div style="padding:16px 24px;border-top:1px solid #e5e7eb;display:flex;gap:10px;justify-content:flex-end;flex-shrink:0;">
+        <button onclick="document.getElementById('addSessionSheet').style.display='none'" style="padding:9px 18px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+        <button id="sessionSaveBtn" onclick="saveSessionSheet()" style="padding:9px 18px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Add session</button>
       </div>
     </div>
-
   </div>
 </div>
 </div>
@@ -2750,6 +2854,16 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
           </div>
         </div>
 
+        <div id="s12-nav-sessions" onclick="showPdTab('s12','sessions')" style="display:flex; align-items:center; gap:12px; padding:12px 16px; cursor:pointer;">
+          <span style="color:#6b7280; flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          </span>
+          <div>
+            <div style="font-size:13px; font-weight:600; color:#374151;">Sessions</div>
+            <div style="font-size:11px; color:#6b7280; margin-top:1px;">Active classes</div>
+          </div>
+        </div>
+
         <div id="s12-nav-waiver" onclick="showPdTab('s12','waiver')" style="display:flex; align-items:center; gap:12px; padding:12px 16px; cursor:pointer;">
           <span style="color:#6b7280; flex-shrink:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -2822,6 +2936,22 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
         </div>
 
 
+        <!-- SESSIONS TAB (active partnership) -->
+        <div id="s12-sessions" style="display:none;">
+          <div style="background:white;border:1px solid #e5e7eb;border-radius:10px;padding:24px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #f3f4f6;">
+              <div style="font-size:16px;font-weight:700;color:#111827;">Active Sessions</div>
+              <button onclick="openManageSessionsSheet()" style="padding:7px 16px;background:white;color:#374151;border:1px solid #e5e7eb;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Manage sessions</button>
+            </div>
+            <div class="ms-table-wrap">
+              <table class="ms-table">
+                <thead><tr><th>#</th><th>Date</th><th>Program</th><th>Instructor</th><th>Registered</th><th>Attended</th><th>Status</th></tr></thead>
+                <tbody id="s12-sessions-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
         <!-- WAIVER & AGREEMENT TAB -->
         <div id="s12-waiver" style="display:none;">
           <div style="background:white;border:1px solid #e5e7eb;border-radius:10px;padding:24px;">
@@ -2859,16 +2989,12 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
                 <div style="font-size:16px;font-weight:700;color:#111827;">Attendance Tracking</div>
                 <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
               </div>
-              <button id="att-send-btn" onclick="sendAttendanceToSchool()" style="padding:7px 16px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Send to school →</button>
+              <button onclick="openManageSessionsSheet()" style="display:flex;align-items:center;gap:6px;background:white;border:1.5px solid #d1d5db;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:500;color:#374151;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="#374151" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Manage Sessions
+              </button>
             </div>
-            <!-- Sent banner -->
-            <div id="att-sent-banner" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;margin-bottom:14px;display:none;align-items:center;justify-content:space-between;gap:10px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span style="font-size:15px;">📧</span>
-                <span style="font-size:12px;color:#166534;font-weight:500;">Attendance sheet sent to sjohnson@oakview.edu — awaiting school response</span>
-              </div>
-              <button onclick="openSchoolResponseModal()" style="padding:5px 12px;border:1px solid #bbf7d0;background:white;color:#166534;border-radius:6px;font-size:12px;cursor:pointer;white-space:nowrap;">Simulate school response →</button>
-            </div>
+
             <div class="ms-table-wrap">
               <table class="ms-table">
                 <thead>
@@ -2911,7 +3037,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
                 <div style="font-size:16px;font-weight:700;color:#111827;">Invoicing</div>
                 <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary</div>
               </div>
-              <button onclick="goTo('s13')" style="background:#1D6B45;color:white;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">+ Create invoice</button>
+              <button onclick="openCreateInvoiceSheet()" style="background:#1D6B45;color:white;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">+ Create invoice</button>
             </div>
             <div class="ms-table-wrap">
               <table class="ms-table">
@@ -2925,19 +3051,78 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td style="font-weight:600;color:#111827;">#INV-001</td>
-                    <td>Science Magic — 4 sessions (Apr 14 – Apr 28)</td>
-                    <td style="font-weight:600;">$340</td>
-                    <td>Apr 30, 2026</td>
-                    <td><span class="badge badge-sent">Sent</span></td>
-                    <td><button class="ms-btn outline small" onclick="goTo('s13')">View</button></td>
-                  </tr>
+                <tbody id="s12-invoice-tbody">
+                  <!-- rendered by renderS12Invoices() -->
                 </tbody>
               </table>
             </div>
           </div>
+
+          <!-- Create Invoice Sheet -->
+          <div id="createInvoiceSheet" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:3000;">
+            <div style="position:absolute;right:0;top:0;bottom:0;width:500px;background:white;box-shadow:-4px 0 24px rgba(0,0,0,0.12);display:flex;flex-direction:column;">
+              <div style="padding:20px 24px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;">
+                <div style="font-size:16px;font-weight:700;color:#111827;">Create Invoice</div>
+                <button onclick="closeCreateInvoiceSheet()" style="background:none;border:none;font-size:18px;color:#6b7280;cursor:pointer;">✕</button>
+              </div>
+              <div style="flex:1;overflow-y:auto;padding:24px;">
+                <div style="margin-bottom:20px;">
+                  <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Billing Period</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                    <div>
+                      <label style="font-size:12px;color:#6b7280;display:block;margin-bottom:4px;">From</label>
+                      <input type="date" value="2026-04-14" style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:8px 10px;font-size:13px;box-sizing:border-box;">
+                    </div>
+                    <div>
+                      <label style="font-size:12px;color:#6b7280;display:block;margin-bottom:4px;">To</label>
+                      <input type="date" value="2026-04-28" style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:8px 10px;font-size:13px;box-sizing:border-box;">
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-bottom:20px;">
+                  <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Due Date</div>
+                  <input type="date" value="2026-04-30" style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:8px 10px;font-size:13px;box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:20px;">
+                  <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Include Sessions</div>
+                  <div style="border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
+                    <div style="display:grid;grid-template-columns:auto 1fr 80px 80px;gap:0;background:#f9fafb;padding:8px 12px;border-bottom:1px solid #e5e7eb;">
+                      <div style="font-size:11px;font-weight:600;color:#9ca3af;width:28px;"></div>
+                      <div style="font-size:11px;font-weight:600;color:#9ca3af;">SESSION</div>
+                      <div style="font-size:11px;font-weight:600;color:#9ca3af;">ATTENDED</div>
+                      <div style="font-size:11px;font-weight:600;color:#9ca3af;">TOTAL</div>
+                    </div>
+                    <label style="display:grid;grid-template-columns:auto 1fr 80px 80px;gap:0;padding:10px 12px;border-bottom:1px solid #f3f4f6;align-items:center;cursor:pointer;">
+                      <input type="checkbox" checked style="accent-color:#1D6B45;width:14px;height:14px;margin-right:10px;">
+                      <div><div style="font-size:13px;font-weight:500;color:#111;">Science Magic</div><div style="font-size:11px;color:#9ca3af;">Apr 14 · Apr 21</div></div>
+                      <div style="font-size:13px;color:#374151;">16</div>
+                      <div style="font-size:13px;font-weight:600;color:#111;">$272</div>
+                    </label>
+                    <label style="display:grid;grid-template-columns:auto 1fr 80px 80px;gap:0;padding:10px 12px;align-items:center;cursor:pointer;">
+                      <input type="checkbox" checked style="accent-color:#1D6B45;width:14px;height:14px;margin-right:10px;">
+                      <div><div style="font-size:13px;font-weight:500;color:#111;">Teeny Tiny Treats</div><div style="font-size:11px;color:#9ca3af;">Apr 16</div></div>
+                      <div style="font-size:13px;color:#374151;">8</div>
+                      <div style="font-size:13px;font-weight:600;color:#111;">$68</div>
+                    </label>
+                  </div>
+                </div>
+                <div style="margin-bottom:20px;">
+                  <div style="font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Notes (optional)</div>
+                  <textarea placeholder="Add a note for the school..." rows="3" style="width:100%;border:1px solid #d1d5db;border-radius:6px;padding:8px 10px;font-size:13px;resize:none;box-sizing:border-box;"></textarea>
+                </div>
+                <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:13px;color:#15803d;font-weight:500;">Invoice Total</span>
+                  <span style="font-size:18px;font-weight:700;color:#15803d;">$340</span>
+                </div>
+              </div>
+              <div style="padding:16px 24px;border-top:1px solid #e5e7eb;display:flex;gap:10px;justify-content:flex-end;">
+                <button onclick="closeCreateInvoiceSheet()" style="padding:9px 18px;border:1.5px solid #d1d5db;background:white;border-radius:8px;font-size:13px;font-weight:500;color:#374151;cursor:pointer;">Cancel</button>
+                <button onclick="saveDraftInvoice()" style="padding:9px 18px;background:white;border:1.5px solid #1D6B45;color:#1D6B45;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;">Save as Draft</button>
+                <button onclick="previewInvoice()" style="padding:9px 18px;background:#1D6B45;border:none;color:white;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Preview &amp; Send →</button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -2974,7 +3159,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
       <div style="font-size:12px;color:#9ca3af;margin-top:8px">Payment due within 30 days of receipt via credit card or check.</div>
       <div class="inv-modal-actions">
         <button class="inv-cancel-btn" onclick="goTo('s12')">Cancel</button>
-        <button class="inv-send-btn" onclick="goTo('s14')">Send Invoice</button>
+        <button class="inv-send-btn" id="s13-send-btn" onclick="sendInvoice()">Send Invoice</button>
       </div>
     </div>
   </div>
@@ -3075,7 +3260,7 @@ table.ms-table tr:hover td { background: #f9fafb; cursor: pointer; }
 </div>
 
 <script>
-const visibleScreens = ['s1','s2','s3','sA1','sA2','sKC1','s4','s5','s6','s7','s9','s10','s11','s12','s13','s14'];
+const visibleScreens = ['s1','s2','s3','sA1','sKC1','s6','s7','s10','s11','s12','s13','s14'];
 let currentVisible = 0;
 
 // ── Catalog / fallback data ─────────────────────────────
@@ -3188,27 +3373,83 @@ function deleteSession(i) {
 
 function openEditSessionSheet(i) {
   const item = getS6Store()[i];
+  if (!item) return;
   document.getElementById('sessionSheetTitle').textContent = 'Edit Session';
   document.getElementById('sessionSaveBtn').textContent = 'Save changes';
   document.getElementById('sessionEditIndex').value = i;
+
+  // Class name (now a text input)
   const classPicker = document.getElementById('sessionClassPicker');
-  if (classPicker) {
-    for (let o of classPicker.options) { if (o.text === item.title) { classPicker.value = o.value; break; } }
-  }
-  const schedPicker = document.getElementById('sessionSchedulePicker');
-  if (schedPicker) schedPicker.value = item.scheduleKey;
+  if (classPicker) classPicker.value = item.title || '';
+
+  // Instructor (now a text input, use .value not .textContent)
+  const nameEl = document.getElementById('sessionInstructorName');
+  if (nameEl) nameEl.value = item.instructor || '';
+
+  // Start date
   const startInput = document.getElementById('sessionStartDate');
   if (startInput && item.startDate) {
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const parts = item.startDate.split(' ');
     const m = String(months.indexOf(parts[0]) + 1).padStart(2, '0');
     const d = String(parseInt(parts[1])).padStart(2, '0');
-    startInput.value = `${parts[2]}-${m}-${d}`;
+    startInput.value = parts[2] + '-' + m + '-' + d;
   }
+
+  // End date
+  const endInput = document.getElementById('sessionEndDate');
+  if (endInput && item.endDate) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const parts = item.endDate.split(' ');
+    const m = String(months.indexOf(parts[0]) + 1).padStart(2, '0');
+    const d = String(parseInt(parts[1])).padStart(2, '0');
+    endInput.value = parts[2] + '-' + m + '-' + d;
+  }
+
+  // Schedule — set day pills and time inputs
+  const schedStr = item.schedule || ''; // e.g. "Tuesdays · 5:30 PM"
+  // Parse day
+  const dayMap = { 'monday':'Mon','tuesday':'Tue','wednesday':'Wed','thursday':'Thu','friday':'Fri','saturday':'Sat','sunday':'Sun' };
+  const dayPicker = document.getElementById('sessionDayPicker');
+  if (dayPicker) {
+    dayPicker.querySelectorAll('button').forEach(function(btn) {
+      const day = btn.getAttribute('data-day');
+      const schedLower = schedStr.toLowerCase();
+      const isActive = Object.entries(dayMap).some(function(e) {
+        return schedLower.includes(e[0]) && e[1] === day;
+      });
+      if (isActive) {
+        btn.classList.add('session-day-active');
+        btn.style.border = '1.5px solid #1D6B45';
+        btn.style.background = '#f0fdf4';
+        btn.style.color = '#1D6B45';
+        btn.style.fontWeight = '600';
+      } else {
+        btn.classList.remove('session-day-active');
+        btn.style.border = '1.5px solid #e5e7eb';
+        btn.style.background = 'white';
+        btn.style.color = '#374151';
+        btn.style.fontWeight = '500';
+      }
+    });
+  }
+  // Parse time e.g. "5:30 PM"
+  const timeMatch = schedStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (timeMatch) {
+    let h = parseInt(timeMatch[1]);
+    const mins = timeMatch[2];
+    const ampm = timeMatch[3].toUpperCase();
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    const tStr = String(h).padStart(2,'0') + ':' + mins;
+    const ts = document.getElementById('sessionTimeStart');
+    if (ts) ts.value = tStr;
+  }
+
+  // Sessions count
   const numInput = document.getElementById('sessionNumClasses');
   if (numInput) numInput.value = item.sessions || 10;
-  const nameEl = document.getElementById('sessionInstructorName');
-  if (nameEl) nameEl.textContent = item.instructor;
+
   document.getElementById('addSessionSheet').style.display = 'flex';
 }
 
@@ -3379,12 +3620,96 @@ function renderS13Invoice() {
   if (totalEl) totalEl.textContent = '$' + grand.toFixed(2);
 }
 
-function sendAttendanceToSchool() {
-  const btn = document.getElementById('att-send-btn');
-  if (btn) { btn.textContent = 'Sent ✓'; btn.style.opacity = '0.6'; btn.disabled = true; }
-  const banner = document.getElementById('att-sent-banner');
-  if (banner) banner.style.display = 'flex';
+// sendAttendanceToSchool removed — schools do not report attendance back
+
+// ── Invoice flow ──────────────────────────────────────
+window._invoices = []; // starts empty; gets populated after draft/send
+
+function renderS12Invoices() {
+  var tbody = document.getElementById('s12-invoice-tbody');
+  if (!tbody) return;
+  if (window._invoices.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#9ca3af;padding:32px;font-size:13px;">No invoices yet. Click <strong>+ Create invoice</strong> to get started.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = window._invoices.map(function(inv, i) {
+    var statusBadge = inv.status === 'Sent'
+      ? '<span class="badge badge-sent">Sent</span>'
+      : '<span style="display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:#fef3c7;color:#92400e;">Draft</span>';
+    var actions = inv.status === 'Draft'
+      ? '<div style="display:flex;gap:6px;align-items:center;"><button class="ms-btn outline small" onclick="previewInvoiceById(' + i + ')">Preview</button>'
+        + '<button class="ms-btn small" style="background:#1D6B45;color:white;border:none;" onclick="sendInvoiceById(' + i + ')">Send</button></div>'
+      : '<button class="ms-btn outline small" onclick="viewSentInvoice()">View</button>';
+    return '<tr>'
+      + '<td style="font-weight:600;color:#111827;">' + inv.number + '</td>'
+      + '<td>' + inv.description + '</td>'
+      + '<td style="font-weight:600;">$' + inv.amount + '</td>'
+      + '<td>' + inv.dueDate + '</td>'
+      + '<td>' + statusBadge + '</td>'
+      + '<td style="white-space:nowrap;">' + actions + '</td>'
+      + '</tr>';
+  }).join('');
 }
+
+function openCreateInvoiceSheet() {
+  var sheet = document.getElementById('createInvoiceSheet');
+  if (sheet) sheet.style.display = 'block';
+}
+
+function closeCreateInvoiceSheet() {
+  var sheet = document.getElementById('createInvoiceSheet');
+  if (sheet) sheet.style.display = 'none';
+}
+
+function saveDraftInvoice() {
+  var num = '#INV-00' + (window._invoices.length + 1);
+  window._invoices.push({ number: num, description: 'Science Magic + Teeny Tiny Treats — Apr 14 – Apr 28', amount: 340, dueDate: 'Apr 30, 2026', status: 'Draft' });
+  closeCreateInvoiceSheet();
+  renderS12Invoices();
+  showToast('Invoice saved as draft');
+}
+
+function previewInvoice() {
+  // Save draft first then go to preview
+  if (window._invoices.length === 0 || window._invoices[window._invoices.length - 1].status !== 'Draft') {
+    var num = '#INV-00' + (window._invoices.length + 1);
+    window._invoices.push({ number: num, description: 'Science Magic + Teeny Tiny Treats — Apr 14 – Apr 28', amount: 340, dueDate: 'Apr 30, 2026', status: 'Draft' });
+  }
+  window._pendingInvoiceIdx = window._invoices.length - 1;
+  closeCreateInvoiceSheet();
+  renderS12Invoices();
+  goTo('s13');
+}
+
+function previewInvoiceById(i) {
+  window._pendingInvoiceIdx = i;
+  goTo('s13');
+}
+
+function viewSentInvoice() { goTo('s13'); }
+function sendInvoice() {
+  var idx = (typeof window._pendingInvoiceIdx !== 'undefined') ? window._pendingInvoiceIdx : (window._invoices.length - 1);
+  if (window._invoices[idx]) {
+    window._invoices[idx].status = 'Sent';
+  }
+  var btn = document.getElementById('s13-send-btn');
+  if (btn) {
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+  }
+  setTimeout(function() {
+    renderS12Invoices();
+    goTo('s14');
+  }, 900);
+}
+
+function sendInvoiceById(i) {
+  window._pendingInvoiceIdx = i;
+  window._invoices[i].status = 'Sent';
+  renderS12Invoices();
+  showToast('Invoice sent to sjohnson@oakview.edu');
+}
+
 
 function openSchoolResponseModal() {
   const rows = getS12AttendanceStore();
@@ -3605,8 +3930,9 @@ function goTo(id) {
   }
   window.scrollTo(0, 0);
   if (['s6','s7','s9','s10'].includes(id)) { renderS6Sessions(); renderAgreementTables(); }
-  if (id === 's12') renderS12Attendance();
-  if (id === 's13') renderS13Invoice();
+  if (id === 's12') { renderS12Attendance(); renderS12Sessions(); renderS12Invoices(); }
+  if (id === 's13') { renderS13Invoice(); var sb=document.getElementById('s13-send-btn'); if(sb){sb.textContent='Send Invoice';sb.disabled=false;} }
+  if (id === 'sA1' || id === 'sKC1') renderEmailDetails();
 }
 
 function next() {
@@ -3665,7 +3991,405 @@ function adoptSignature() {
 
 // ── Init ───────────────────────────────────────────────
 goTo('s1');
+
+
+
+// ── Populate email info boxes from form data ──────────────────────────────────
+function renderEmailDetails() {
+  const school = (document.getElementById('s2-org') ? document.getElementById('s2-org').value : null) || 'Oak View Elementary';
+  const fname = (document.getElementById('s2-fname') ? document.getElementById('s2-fname').value : null) || 'Sarah';
+  const lname = (document.getElementById('s2-lname') ? document.getElementById('s2-lname').value : null) || 'Johnson';
+  const contact = fname + ' ' + lname;
+  const ageEl = document.getElementById('s2-age-select');
+  const ageLabels = { toddler:'Toddler (18 mo – 3 yrs)', preschool:'Preschool (3 – 5 yrs)', elementary:'School Age (6 – 12 yrs)', tweens:'Tweens & Teens (12 – 17 yrs)' };
+  const age = ageEl ? (ageLabels[ageEl.value] || ageEl.value) : 'School Age (6 – 12 yrs)';
+  const locEl = document.getElementById('locationSelect');
+  const loc = locEl ? locEl.options[locEl.selectedIndex].text : 'Kidcreate Studio — Ashburn, VA';
+  const schedEl = document.querySelector('#s2 textarea');
+  const sched = schedEl ? schedEl.value : 'Tuesdays and Thursdays at 5:30 PM';
+
+  // Collect checked classes
+  const checked = Array.from(document.querySelectorAll('#s2-class-list input[type=checkbox]:checked'));
+  const classNames = checked.map(cb => {
+    const label = cb.closest('label');
+    return label ? label.querySelector('div > div:first-child').textContent.trim() : '';
+  }).filter(Boolean);
+  const tagHtml = classNames.length
+    ? classNames.map(n => `<span style="display:inline-block;background:#e8f4ed;color:#166534;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:600;margin:2px;">${n}</span>`).join('')
+    : '<span style="color:#9ca3af;font-size:11px;">No classes selected</span>';
+
+  // sA1 fields
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  const setHtml = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
+  set('sA1-school', school); set('sA1-contact', contact);
+  set('sA1-age', age); set('sA1-location', loc.replace(' — ',' – '));
+  set('sA1-schedule', sched); setHtml('sA1-programs', tagHtml);
+
+  // sKC1 fields
+  const emailEl = document.getElementById('s2-email');
+  const email = emailEl ? emailEl.value : 'sjohnson@oakview.edu';
+  set('sKC1-school', school); set('sKC1-contact', contact + ' · ' + email);
+  set('sKC1-age', age); set('sKC1-location', loc.replace(' — ',' – '));
+  set('sKC1-schedule', sched); setHtml('sKC1-programs', tagHtml);
+}
+
+// ── Render sessions in s12 sessions tab ───────────────────────────────────────
+function renderS12Sessions() {
+  const tbody = document.getElementById('s12-sessions-tbody');
+  if (!tbody) return;
+  const rows = getS12AttendanceStore();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  tbody.innerHTML = rows.map((r, i) => {
+    const d = new Date(r.sortKey);
+    const day = isNaN(d) ? '' : days[d.getDay()];
+    const badge = r.status === 'completed'
+      ? '<span class="badge badge-signed">Completed</span>'
+      : '<span class="badge badge-requested">Upcoming</span>';
+    const regVal = r.registered !== null ? r.registered : '<span style="color:#d1d5db">—</span>';
+    const attVal = r.attended !== null ? `<span style="color:#166534;font-weight:600">${r.attended}</span>` : '<span style="color:#d1d5db">—</span>';
+    return `<tr>
+      <td>${i + 1}</td>
+      <td>${r.date}</td>
+      <td style="font-weight:500">${r.program}</td>
+      <td>${['Tu Le','Maria Garcia','James Park'][r.programIdx % 3]}</td>
+      <td style="text-align:center">${regVal}</td>
+      <td style="text-align:center">${attVal}</td>
+      <td>${badge}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Age group → programs mapping (from KidCreate website) ────────────────────
+const _ageGroupPrograms = {
+  'toddler': [
+    { id: 'little-brushstrokes', name: 'Little Brushstrokes', ages: '18 mo – 3 yrs', duration: '45 min' },
+    { id: 'messy-masterpieces', name: 'Messy Masterpieces', ages: '18 mo – 3 yrs', duration: '45 min' },
+    { id: 'color-explorers', name: 'Color Explorers', ages: '18 mo – 3 yrs', duration: '45 min' },
+  ],
+  'preschool': [
+    { id: 'rainbow-painters', name: 'Rainbow Painters', ages: '3 – 5 yrs', duration: '60 min' },
+    { id: 'clay-critters', name: 'Clay Critters', ages: '3 – 5 yrs', duration: '60 min' },
+    { id: 'sticker-stamp', name: 'Sticker & Stamp Art', ages: '3 – 5 yrs', duration: '60 min' },
+  ],
+  'elementary': [
+    { id: 'science-magic', name: 'Science Magic', ages: '6 – 12 yrs', duration: '60 min', hasInfo: true },
+    { id: 'teeny-treats', name: 'Teeny, Tiny Treats', ages: '6 – 12 yrs', duration: '60 min' },
+    { id: 'paint-party', name: 'Paint Party', ages: '6 – 12 yrs', duration: '60 min' },
+    { id: 'clay-day', name: 'Clay Day', ages: '6 – 12 yrs', duration: '60 min' },
+    { id: 'mixed-media', name: 'Mixed Media Masterclass', ages: '6 – 12 yrs', duration: '90 min' },
+  ],
+  'tweens': [
+    { id: 'advanced-studio', name: 'Advanced Studio Art', ages: '12 – 17 yrs', duration: '90 min' },
+    { id: 'portrait-drawing', name: 'Portrait & Figure Drawing', ages: '12 – 17 yrs', duration: '90 min' },
+    { id: 'digital-art-basics', name: 'Digital Art Basics', ages: '12 – 17 yrs', duration: '60 min' },
+  ],
+};
+
+function loadS2Classes(ageGroup) {
+  var container = document.getElementById('s2-class-list');
+  var noAge = document.getElementById('s2-no-age');
+  if (!container) return;
+  var programs = _ageGroupPrograms[ageGroup];
+  if (!programs || programs.length === 0) {
+    container.innerHTML = '';
+    if (noAge) noAge.style.display = 'block';
+    return;
+  }
+  if (noAge) noAge.style.display = 'none';
+  container.innerHTML = programs.map(function(p) {
+    var infoBtn = p.hasInfo ? '<button type="button" onclick="showClassInfo()" style="font-size:11px;color:#1D6B45;background:none;border:none;cursor:pointer;text-decoration:underline;white-space:nowrap;padding:0;">View more info</button>' : '';
+    return '<label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:8px;background:white;transition:border-color 0.15s;" onmouseover="s2LabelHover(this,true)" onmouseout="s2LabelHover(this,false)">'
+      + '<input type="checkbox" data-class-id="' + p.id + '" style="accent-color:#2d6b3e;width:15px;height:15px;flex-shrink:0;" onchange="onS2ClassCheck(this)">'
+      + '<div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#111;">' + p.name + '</div>'
+      + '<div style="font-size:11px;color:#9ca3af;margin-top:1px;">' + p.ages + ' \xb7 ' + p.duration + '</div></div>'
+      + infoBtn + '</label>';
+  }).join('');
+}
+function s2LabelHover(el, on) {
+  var inp = el.querySelector('input');
+  if (!inp || !inp.checked) el.style.borderColor = on ? '#d1fae5' : '#e5e7eb';
+}
+function showClassInfo() {
+  document.getElementById('classInfoModal').style.display = 'flex';
+}
+
+function onS2ClassCheck(cb) {
+  const label = cb.closest('label');
+  if (label) label.style.borderColor = cb.checked ? '#1D6B45' : '#e5e7eb';
+}
+
+function submitS2Form() {
+  goTo('s3');
+}
+
+// ── Manage Sessions sheet ─────────────────────────────────────────────────────
+let _msStore = null;
+let _msPendingDeleteIdx = null;
+
+function getMsStore() {
+  if (!_msStore) {
+    _msStore = getS12AttendanceStore().map((r, i) => ({...r, sessionNum: i + 1, time: '5:30 PM', instructor: ['Tu Le','Maria Garcia','James Park'][i % 3], notes: '' }));
+  }
+  return _msStore;
+}
+
+function toggleSessionDay(btn) {
+  var active = btn.classList.contains('session-day-active');
+  if (active) {
+    btn.classList.remove('session-day-active');
+    btn.style.border = '1.5px solid #e5e7eb';
+    btn.style.background = 'white';
+    btn.style.color = '#374151';
+    btn.style.fontWeight = '500';
+  } else {
+    btn.classList.add('session-day-active');
+    btn.style.border = '1.5px solid #1D6B45';
+    btn.style.background = '#f0fdf4';
+    btn.style.color = '#1D6B45';
+    btn.style.fontWeight = '600';
+  }
+}
+
+function openManageSessionsSheet() {
+  _msStore = null; // fresh copy each open
+  renderMsTable();
+  document.getElementById('manageSessionsSheet').style.display = 'block';
+}
+
+function closeManageSessions() {
+  document.getElementById('manageSessionsSheet').style.display = 'none';
+}
+
+function renderMsTable() {
+  const tbody = document.getElementById('manage-sessions-tbody');
+  if (!tbody) return;
+  const rows = getMsStore();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  tbody.innerHTML = rows.map((r, i) => {
+    const d = new Date(r.sortKey);
+    const day = days[d.getDay()];
+    const badge = r.status === 'completed'
+      ? '<span style="background:#dcfce7;color:#166534;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:600;">Completed</span>'
+      : '<span style="background:#f3f4f6;color:#6b7280;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:600;">Upcoming</span>';
+    return `<tr style="border-bottom:1px solid #f3f4f6;">
+      <td style="padding:10px 10px;color:#9ca3af;font-size:12px;">${r.sessionNum}</td>
+      <td style="padding:10px 10px;font-size:13px;color:#111;">${r.date}</td>
+      <td style="padding:10px 10px;font-size:13px;color:#374151;">${day} · ${r.time}</td>
+      <td style="padding:10px 10px;font-size:13px;color:#374151;font-weight:500;">${r.program}</td>
+      <td style="padding:10px 10px;font-size:13px;color:#374151;">${r.instructor}</td>
+      <td style="padding:10px 10px;">${badge}</td>
+      <td style="padding:10px 10px;text-align:center;white-space:nowrap;">
+        <button onclick="msEditSession(${i})" style="background:none;border:1px solid #d1d5db;border-radius:5px;cursor:pointer;color:#374151;font-size:11px;font-weight:500;padding:3px 10px;margin-right:4px;">Edit</button>
+        <button onclick="msDeleteSession(${i})" style="background:none;border:none;cursor:pointer;color:#9ca3af;font-size:15px;padding:2px 4px;" title="Delete">🗑</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function msEditSession(i) {
+  const store = getMsStore();
+  const row = store[i];
+  if (!row) return;
+  // Populate the "Add a session" form at top with this row's data
+  const dateInput = document.getElementById('ms-add-date');
+  const timeInput = document.getElementById('ms-add-time');
+  const instrInput = document.getElementById('ms-add-instructor');
+  if (dateInput) dateInput.value = row.sortKey; // sortKey is YYYY-MM-DD
+  if (timeInput) {
+    // convert "5:30 PM" -> "17:30"
+    const tp = row.time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (tp) {
+      let h = parseInt(tp[1]);
+      const m = tp[2];
+      const ampm = tp[3].toUpperCase();
+      if (ampm === 'PM' && h !== 12) h += 12;
+      if (ampm === 'AM' && h === 12) h = 0;
+      timeInput.value = String(h).padStart(2,'0') + ':' + m;
+    }
+  }
+  if (instrInput) instrInput.value = row.instructor || '';
+  // Switch button to Update mode
+  const addBtn = document.getElementById('ms-add-btn');
+  if (addBtn) { addBtn.textContent = 'Update'; addBtn.setAttribute('data-edit-idx', i); }
+  const addTitle = document.getElementById('ms-add-title');
+  if (addTitle) addTitle.textContent = 'Edit session';
+  // Scroll to top
+  const panel = document.querySelector('#manageSessionsSheet [style*="overflow-y:auto"]');
+  if (panel) panel.scrollTop = 0;
+}
+
+function msDeleteSession(i) {
+  _msPendingDeleteIdx = i;
+  const row = getMsStore()[i];
+  const hasData = row.attended !== null || row.registered !== null;
+  document.getElementById('msDeleteMsg').textContent = hasData
+    ? '⚠️ This session has attendance data logged. Deleting it will remove that data permanently.'
+    : `Session ${row.sessionNum} on ${row.date} will be removed.`;
+  const confirmEl = document.getElementById('msDeleteConfirm');
+  confirmEl.style.display = 'flex';
+  document.getElementById('msDeleteConfirmBtn').onclick = () => {
+    getMsStore().splice(_msPendingDeleteIdx, 1);
+    getMsStore().forEach((r, i) => r.sessionNum = i + 1); // renumber
+    confirmEl.style.display = 'none';
+    renderMsTable();
+  };
+}
+
+function msAddOrUpdate() {
+  const btn = document.getElementById('ms-add-btn');
+  const editIdx = btn ? btn.getAttribute('data-edit-idx') : '';
+  if (editIdx !== '' && editIdx !== null) {
+    // Update existing row
+    const store = getMsStore();
+    const i = parseInt(editIdx);
+    const dateVal = document.getElementById('ms-add-date').value;
+    const timeVal = document.getElementById('ms-add-time').value;
+    const instrVal = document.getElementById('ms-add-instructor').value.trim();
+    if (!dateVal) { const err = document.getElementById('ms-add-error'); if(err){err.textContent='Please pick a date.';err.style.display='block';} return; }
+    // Format time
+    const [hh, mm] = timeVal.split(':');
+    const h = parseInt(hh), ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    const timeStr = h12 + ':' + mm + ' ' + ampm;
+    // Format date
+    const d = new Date(dateVal + 'T12:00:00');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    store[i].date = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    store[i].time = timeStr;
+    store[i].instructor = instrVal || store[i].instructor;
+    store[i].sortKey = dateVal;
+    // Sort by date
+    store.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
+    store.forEach((r, idx) => r.sessionNum = idx + 1);
+    // Reset form
+    document.getElementById('ms-add-date').value = '';
+    document.getElementById('ms-add-time').value = '17:30';
+    document.getElementById('ms-add-instructor').value = '';
+    if (btn) { btn.textContent = '+ Add'; btn.setAttribute('data-edit-idx', ''); }
+    const title = document.getElementById('ms-add-title');
+    if (title) title.textContent = 'Add a session';
+    const err = document.getElementById('ms-add-error');
+    if (err) err.style.display = 'none';
+    renderMsTable();
+  } else {
+    msAddSession();
+  }
+}
+
+function msAddSession() {
+  const date = document.getElementById('ms-add-date').value;
+  const time = document.getElementById('ms-add-time').value;
+  const instructor = document.getElementById('ms-add-instructor').value.trim();
+  const errEl = document.getElementById('ms-add-error');
+  if (!date) { errEl.textContent = 'Please pick a date.'; errEl.style.display = 'block'; return; }
+  const store = getMsStore();
+  const duplicate = store.some(r => r.date === new Date(date + 'T12:00:00').toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'}));
+  if (duplicate) { errEl.textContent = 'A session already exists on this date.'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  const d = new Date(date + 'T12:00:00');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  store.push({ date: dateStr, sortKey: d.getTime(), program: 'Custom', programIdx: 0, registered: null, attended: null, status: 'upcoming', sessionNum: 0, time: time || '5:30 PM', instructor: instructor || 'TBD', notes: '' });
+  store.sort((a, b) => a.sortKey - b.sortKey);
+  store.forEach((r, i) => r.sessionNum = i + 1);
+  document.getElementById('ms-add-date').value = '';
+  document.getElementById('ms-add-instructor').value = '';
+  renderMsTable();
+}
+
+function saveManageSessions() {
+  window.s12AttendanceStore = getMsStore();
+  renderS12Attendance();
+  closeManageSessions();
+  // Brief save toast
+  const t = document.createElement('div');
+  t.textContent = '✅ Sessions saved';
+  t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#111827;color:white;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;z-index:9999;';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2000);
+}
+
+// ── Init s2 form with default age group ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadS2Classes('elementary');
+});
+
 </script>
+
+
+<!-- ══ Manage Sessions Right Sheet ══════════════════════════════════ -->
+<div id="manageSessionsSheet" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.35);" onclick="if(event.target===this)closeManageSessions()">
+  <div style="position:absolute;top:42px;right:0;bottom:0;width:680px;background:white;display:flex;flex-direction:column;box-shadow:-4px 0 32px rgba(0,0,0,0.12);">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #e5e7eb;flex-shrink:0;">
+      <div>
+        <div style="font-size:16px;font-weight:700;color:#111827;">Manage Sessions</div>
+        <div style="font-size:12px;color:#6b7280;margin-top:2px;">Oak View Elementary · Spring/Summer 2026</div>
+      </div>
+      <div onclick="closeManageSessions()" style="cursor:pointer;color:#9ca3af;font-size:22px;line-height:1;">×</div>
+    </div>
+
+    <!-- Add session row — pinned at top -->
+    <div style="padding:14px 24px;border-bottom:1px solid #e5e7eb;background:#fafafa;flex-shrink:0;">
+      <div id="ms-add-title" style="font-size:12px;font-weight:600;color:#374151;margin-bottom:10px;">Add a session</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;">
+        <div>
+          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Date</label>
+          <input type="date" id="ms-add-date" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Time</label>
+          <input type="time" id="ms-add-time" value="17:30" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="font-size:11px;color:#6b7280;display:block;margin-bottom:4px;">Instructor</label>
+          <input type="text" id="ms-add-instructor" placeholder="Name" style="width:100%;padding:7px 10px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;box-sizing:border-box;">
+        </div>
+        <div>
+          <button id="ms-add-btn" data-edit-idx="" onclick="msAddOrUpdate()" style="padding:8px 18px;background:#1D6B45;color:white;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">+ Add</button>
+        </div>
+      </div>
+      <div id="ms-add-error" style="display:none;font-size:11px;color:#dc2626;margin-top:6px;"></div>
+    </div>
+
+    <!-- Session list -->
+    <div style="flex:1;overflow-y:auto;padding:16px 24px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:2px solid #e5e7eb;">
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">#</th>
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Date</th>
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Day · Time</th>
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Program</th>
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Instructor</th>
+            <th style="padding:8px 10px;text-align:left;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;">Status</th>
+            <th style="padding:8px 10px;text-align:center;font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;"></th>
+          </tr>
+        </thead>
+        <tbody id="manage-sessions-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div style="display:flex;gap:10px;justify-content:flex-end;padding:16px 24px;border-top:1px solid #e5e7eb;flex-shrink:0;">
+      <button onclick="closeManageSessions()" style="padding:9px 20px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+      <button onclick="saveManageSessions()" style="padding:9px 20px;background:#1D6B45;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete session confirm -->
+<div id="msDeleteConfirm" style="display:none;position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:12px;padding:24px 28px;width:380px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+    <div style="font-size:15px;font-weight:700;color:#111;margin-bottom:8px;">Delete this session?</div>
+    <div id="msDeleteMsg" style="font-size:13px;color:#6b7280;margin-bottom:20px;">This cannot be undone.</div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button onclick="document.getElementById('msDeleteConfirm').style.display='none'" style="padding:8px 18px;border:1px solid #e5e7eb;background:white;color:#374151;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+      <button id="msDeleteConfirmBtn" style="padding:8px 18px;background:#dc2626;color:white;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Delete</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
